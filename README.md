@@ -3,13 +3,13 @@
 Softuni Angular Project Defense - Regular Exam - April 2024
 Angular-Node-Express-Typescript
 
-Intro
+##Intro
 
 An application project built on a stack using Node.js and Express for the back-end, and Angular CLI version 16 for the front-end. All data is stored and fetched from the non-relational database MongoDB.
 
 Angular CLI can be used in the project in order to create components, services, routing etc. And you can access all the commands for client, angular cli and server from the root directly.
 
-Setup
+##Setup
 To use angular commands, you need to install angular cli. For that, run:
 
 npm install -g @angular/cli
@@ -28,7 +28,7 @@ Install global dependencies: (This will install global dependencies which are us
 
 npm run globalnpms
 
-Running the app
+##Running the app
 There are some steps in order to do development and deployment easily.
 
 <!-- Development
@@ -39,7 +39,7 @@ npm run watch:all
 
 This command will create a directory named build in the root directory of the project. The build directory contains two directories named client and server. The client directory contains all compiled code of angular and the server directory contains all the javascript code compiled from typescript code. -->
 
-Running Server
+###Running Server
 In order to run a server for development, open a new terminal window and run:
 
 npm start
@@ -54,7 +54,7 @@ To see the data from express/api routes, navigate to:
 
 localhost:3000/api/
 
-Running Client
+###Running Client
 In order to run the Angular application on the client, open a new terminal window and run:
 
 ng serve
