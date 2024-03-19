@@ -1,0 +1,27 @@
+<form>
+    <div id="app">
+        <div class="app-view">
+                <header class="app-header">
+                    <span class="app-subheading">
+                        Register
+                    </span>
+                </header>
+                <input type="text" required minlength="3" placeholder="Username" />
+                <p class="error">Username is required!</p>
+                <p class="error">Username must be at least 3 charactes!</p>
+                <input type="email" required pattern=".*\.\w{2,}" placeholder="Email Address" />
+                <p class="error">Email is invalid!</p>
+                <p class="error">Email is required!</p>
+                <input type="password" required minlength="4" placeholder="Password" />
+                <p class="error">Password is required!</p>
+                <p class="error">Password must be at least 3 charactes!</p>
+                <input type="password" required placeholder="Repeat Password" />
+                <p class="error">Password is required!</p>
+                <p class="error">Passwords missmatch!</p>
+                <button routerLink="/login" class="app-button">Login</button>
+                <div class="app-register">
+                    Have an account? <a routerLink="/login">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </form>

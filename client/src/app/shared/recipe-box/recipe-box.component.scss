@@ -1,0 +1,164 @@
+* {
+  font-size: 14px;
+}
+
+.box-container{
+  background-color: #ffdec1;
+  margin: 5em 0;
+}
+
+.container {
+  border: 1px solid red;
+  width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.recipe-card {
+  background: #fff;
+  margin: 1em auto;
+  max-width: 280px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  aside {
+    position: relative;
+    // border: 1px solid red;
+    // height: 7em;
+    
+    
+    .image{
+      overflow: hidden;
+      // width: 300px;
+      height: 10em;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto;
+      margin: 0;
+    }
+
+    .image:before {
+      display: block;
+      content: '';
+      padding-top: 100%;
+    }
+
+    .image img{
+      display: block;
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    .button {
+      background: #9fbb73;
+      display: inline-block;
+      position: absolute;
+      top: 80%;
+      right: 5%;
+      width: 3em;
+      height: 3em;
+      border-radius: 100%;
+      line-height: 2.5em;
+      text-align: center;
+      z-index: 1;
+
+      i {
+        padding: 0.25em 0;
+        font-size: 2em;
+        color: #fff;
+      }
+
+      i:hover {
+        color: rgb(231, 65, 65);
+        transition: 500ms;
+      }
+    }
+  }
+
+  article {
+    padding: 1.25em 1.5em;
+
+    ul {
+      //   list-style: none;
+      margin: 0.5em 0 0;
+      padding: 0;
+      li {
+        display: inline-block;
+        margin-left: 0.6em;
+        line-height: 1em;
+        &:first-child {
+          margin-left: 0;
+        }
+
+        i {
+          display: inline-block;
+          color: #9fbb73;
+          font-size: 0.8em;
+        }
+
+        .icon {
+          vertical-align: bottom;
+        }
+
+        span {
+          margin-left: 0.2em;
+          font-size: 0.8em;
+          font-weight: 300;
+          vertical-align: middle;
+          color: #838689;
+        }
+      }
+    }
+
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 300;
+    }
+
+    h2 {
+      font-size: 1.7em;
+      color: #222222;
+    }
+
+    h3 {
+      font-size: 1.1em;
+      color: #838689;
+    }
+
+    p {
+      margin: 1.25em 0;
+      font-size: 0.8em;
+      font-weight: 400;
+      color: #222222;
+
+      span {
+        font-weight: 700;
+        color: #000000;
+      }
+    }
+
+    .ingredients {
+      margin: 1em 0 0.5em;
+    }
+  }
+
+  .icon-play,
+  .icon-play\:regular {
+    background-position: 1px -58px;
+    width: 22px;
+    height: 25px;
+  }
+}
+
+.recipe-card:hover {
+  box-shadow: 0 0 1em 0.4em rgb(0, 0, 0, 0.3);
+  transition: 300ms;
+}
+

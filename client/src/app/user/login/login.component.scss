@@ -1,0 +1,111 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+
+$app-padding: 6vh;
+$app-width: 50vh;
+$app-height: 55vh;
+$detail-padding: 4vh;
+$heading-text-size: 4vh;
+$color-primary: #659d0b;
+$color-secondary: #d0dff0;
+$color-text-secondary: rgba(black, 0.45);
+$color-border: #e3e3e3;
+
+#app {
+  margin: 5em auto;
+  max-width: $app-width;
+  min-height: $app-height;
+  background: white;
+  box-shadow: 0 0 2rem rgba(black, 0.1);
+  position: relative;
+}
+
+.app-view {
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.app-header {
+  padding: $app-padding;
+
+  &,
+  > * {
+    font-size: $heading-text-size;
+    margin: 0;
+    font-weight: 300;
+  }
+}
+
+.app-subheading {
+  color: $color-text-secondary;
+}
+
+.app-register {
+  display: block;
+  bottom: 0;
+  height: 10vh;
+  line-height: 10vh;
+  padding: 0 $app-padding;
+  color: $color-text-secondary;
+}
+
+input {
+  font-size: 2.5vh;
+  width: calc(100% - 13vh);
+  height: 7.5vh;
+  background: transparent;
+  top: 0;
+  left: 6.5vh;
+  z-index: 2;
+  border: none;
+  box-shadow: inset 0 -0.5vh rgba(black, 0.1);
+
+  &:focus {
+    outline: none;
+    box-shadow: inset 0 -0.5vh rgba(black, 0.3);
+  }
+}
+
+input[type="email"]:valid {
+  outline: none;
+  box-shadow: inset 0 -0.5vh rgba($color-primary, 0.6);
+}
+
+input[type="password"]:valid {
+  outline: none;
+  box-shadow: inset 0 -0.5vh rgba($color-primary, 0.6);
+}
+
+input:not(:valid) ~ .app-button {
+  pointer-events: none;
+  color: rgba(black, 0.8);
+  opacity: 0.6;
+}
+
+.app-button {
+  border: none;
+  background-color: white;
+  text-decoration: none;
+  display: block;
+  color: $color-primary;
+  font-size: $heading-text-size;
+  padding: 0 $app-padding;
+  margin-top: 1em;
+  font-weight: 400;
+}
+
+.error {
+  font-size: 14px;
+  margin: 0;
+  padding-left: 6.5vh;
+  color: red;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  position: relative;
+}

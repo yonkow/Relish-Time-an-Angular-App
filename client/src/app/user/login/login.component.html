@@ -1,0 +1,19 @@
+<form>
+<div id="app">
+    <div class="app-view">
+            <header class="app-header">
+                <span class="app-subheading">
+                    Sign in to continue.
+                </span>
+            </header>
+            <input type="email" required pattern=".*\.\w{2,}" placeholder="Email Address" />
+            <p class="error">Email is invalid.</p>
+            <input type="password" required placeholder="Password" />
+            <p class="error">Password is invalid.</p>
+            <button routerLink="/login" class="app-button">Login</button>
+            <div class="app-register">
+                Don't have an account? <a routerLink="/register">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</form>
