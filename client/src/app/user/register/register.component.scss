@@ -84,6 +84,7 @@ input:not(:valid) ~ .app-button {
   background-color: white;
   text-decoration: none;
   display: block;
+  cursor: pointer;
   color: $color-primary;
   font-size: $heading-text-size;
   padding: 0 $app-padding;

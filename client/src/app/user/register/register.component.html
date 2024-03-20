@@ -1,27 +1,51 @@
-<form>
+<form [formGroup]="form" class="register" (ngSubmit)="registerHandler()">
     <div id="app">
         <div class="app-view">
-                <header class="app-header">
-                    <span class="app-subheading">
-                        Register
-                    </span>
-                </header>
-                <input type="text" required minlength="3" placeholder="Username" />
-                <p class="error">Username is required!</p>
-                <p class="error">Username must be at least 3 charactes!</p>
-                <input type="email" required pattern=".*\.\w{2,}" placeholder="Email Address" />
-                <p class="error">Email is invalid!</p>
-                <p class="error">Email is required!</p>
-                <input type="password" required minlength="4" placeholder="Password" />
-                <p class="error">Password is required!</p>
-                <p class="error">Password must be at least 3 charactes!</p>
-                <input type="password" required placeholder="Repeat Password" />
-                <p class="error">Password is required!</p>
-                <p class="error">Passwords missmatch!</p>
-                <button routerLink="/login" class="app-button">Login</button>
-                <div class="app-register">
-                    Have an account? <a routerLink="/login">Sign In</a>
-                </div>
+            <header class="app-header">
+                <span class="app-subheading"> Register </span>
+            </header>
+            <!-- username -->
+            <input type="text" formControlName="username" id="username" placeholder="Username" required />
+            <ng-container *ngIf="form.get('username')?.touched">
+                <p *ngIf="form.get('username')?.errors?.['required']" class="error">Username is required!</p>
+                <p *ngIf="form.get('username')?.errors?.['minlength']" class="error">Username must be at least 3
+                    charactes!</p>
+            </ng-container>
+
+            <!-- email -->
+            <input type="email" formControlName="email" id="email" required pattern=".*\.\w{2,}"
+                placeholder="Email Address" />
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p *ngIf="form.get('email')?.errors?.['required']" class="error">Email is required!</p>
+                <p *ngIf="form.get('email')?.errors?.['email']" class="error">Email is invalid!</p>
+            </ng-container>
+
+            <ng-container formGroupName="pass">
+                <!-- password -->
+                <input type="password" formControlName="password" id="password" required minlength="4"
+                    placeholder="Password" />
+                <ng-container *ngIf="form.get('pass')?.get('password')?.touched">
+                    <p *ngIf="form.get('pass')?.get('password')?.errors?.['required']" class="error">Password is
+                        required!</p>
+                    <p *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']" class="error">Password must be
+                        at least 4 charactes!</p>
+                </ng-container>
+
+                <!-- rePassword -->
+                <input type="password" formControlName="rePassword" id="rePassword" required
+                    placeholder="Repeat Password" />
+
+                <ng-container *ngIf="form.get('pass')?.get('rePassword')?.touched">
+                    <p *ngIf="form.get('pass')?.get('rePassword')?.errors?.['required']" class="error">Password is required!</p>
+                    <p *ngIf="form.get('pass')?.errors?.['samePasswordsValidator']" class="error">Passwords missmatch!</p>
+                </ng-container>
+
+            </ng-container>
+
+            <button [disabled]="form.invalid" class="app-button">Login</button>
+            <div class="app-register">
+                Have an account? <a routerLink="/login">Sign In</a>
             </div>
         </div>
-    </form>
+    </div>
+</form>
