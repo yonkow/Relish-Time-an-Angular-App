@@ -8,7 +8,6 @@ const { authMiddleware } = require('./middlewares/authMiddleware');
 const { errorandler } = require('./middlewares/errorMiddleware');
 
 const app = express();
-// app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(cors({
     origin: 'http://localhost:4200',

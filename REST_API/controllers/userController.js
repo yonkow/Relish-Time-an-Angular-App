@@ -2,13 +2,29 @@ const router = require('express').Router();
 
 const userService = require('../services/userService')
 
-router.post('/register', async (req, res) => {
-    const userData = req.body;
-    const result = await userService.register(userData);
-    console.log(result);
-    if(result) {
+// router.post('/register', async (req, res) => {
+//     const userData = req.body;
+//     const result = await userService.register(userData);
+//     console.log(result);
+//     if(result) {
 
-        res.status(200).send({ 'message': 'Registration succsessful.' });
+//         res.status(200).send({ 'message': 'Registration succsessful.' });
+//     }
+// });
+
+router.post('/register', async (req, res) => {
+    try {
+        const userData = req.body;
+        const result = await userService.register(userData);
+        
+        if (result) {
+            res.status(200).send({ message: 'Registration successful' });
+        } else {
+            res.status(500).send({ message: 'Registration failed' });
+        }
+    } catch (error) {
+        console.error('Registration error:', error);
+        res.status(500).send({ message: 'Internal server error' });
     }
 });
 
