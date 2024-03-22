@@ -23,7 +23,7 @@ exports.register = async (regData) => {
 };
 
 exports.login = async (userData) => {
-
+    //todo : or ID const user = await User.findOne({ _id: userData._id });
     const user = await User.findOne({ email: userData.email });
 
     if (!user) {

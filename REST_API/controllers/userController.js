@@ -1,21 +1,20 @@
 const router = require('express').Router();
-
 const userService = require('../services/userService')
 
 router.post('/register', async (req, res) => {
     try {
         const userData = req.body;
-        const result = await userService.register(userData);
-        
+        const createdUser = await userService.register(userData);
+
         if (process.env.NODE_ENV === 'production') {
-            res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: true })
+            res.cookie('auth-cookie', token, { httpOnly: true, sameSite: 'none', secure: true })
         } else {
-            res.cookie(authCookieName, token, { httpOnly: true })
+            res.cookie('auth-cookie', token, { httpOnly: true })
         }
         res.status(200)
             .send(createdUser);
     } catch (err) {
-// TODO: this errors need to be in errorHandler
+        // TODO: this errors need to be in errorHandler
         if (err.name === 'MongoError' && err.code === 11000) {
             let field = err.message.split("index: ")[1];
             field = field.split(" dup key")[0];
@@ -23,7 +22,7 @@ router.post('/register', async (req, res) => {
 
             res.status(409)
                 .send({ message: `This ${field} is already registered!` });
-            reurn;
+            return;
         }
     }
 });
