@@ -1,88 +1,87 @@
 nav {
-    position: sticky;
-    top: 0;
-    max-width: 100svw;
+  position: sticky;
+  top: 0;
+  max-width: 100svw;
 
-    background-color: var(--nav-bg);
+  background-color: var(--nav-bg);
 
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav-title {
-    margin: 0;
-    padding: 5px 20px 0 20px ;
+  margin: 0;
+  padding: 5px 20px 0 20px;
 }
 
 .nav-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: end;
-    gap: 0.5rem;
-    padding: 0;
+  margin: 0;
+  padding: 0 1em;
+  list-style: none;
+  display: flex;
+  /* justify-content: end; */
+  gap: 0.5rem;
 }
 
 .nav-list li {
-    margin: 0 0.5rem;
-    border-radius: 1em 1em 0 0;
-    /* border: 1px solid red; */
+  margin: 0 0.5rem;
+  border-radius: 1em 1em 0 0;
+  /* border: 1px solid red; */
 }
 
 .nav-list li.active {
-    view-transition-name: activeNavTab;
-    background: var(--body-bg);
-    position: relative;
+  view-transition-name: activeNavTab;
+  background: var(--body-bg);
+  position: relative;
 }
 
 .nav-list li:nth-child(1) a {
-    view-transition-name: navLink-1;
+  view-transition-name: navLink-1;
 }
 
 .nav-list li:nth-child(2) a {
-    view-transition-name: navLink-2;
+  view-transition-name: navLink-2;
 }
 
 .nav-list li:nth-child(3) a {
-    view-transition-name: navLink-3;
+  view-transition-name: navLink-3;
 }
 
 ::view-transition-group(activeNavTab) {
-    animation-duration: 500ms;
-    animation-timing-function: ease-in-out;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
 }
 
 .nav-list li.active::before,
 .nav-list li.active::after {
-    --border-radius: 1rem;
+  --border-radius: 1rem;
 
-    content: '';
-    position: absolute;
-    width: var(--border-radius);
-    height: var(--border-radius);
-    background: var(--nav-bg);
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  background: var(--nav-bg);
 }
 
 .nav-list li.active::before {
-    left: calc(var(--border-radius) * -1);
-    bottom: 0;
-    box-shadow: 7px 7px 0 7px var(--body-bg);
-    border-radius: 0 0 100vw 0;
+  left: calc(var(--border-radius) * -1);
+  bottom: 0;
+  box-shadow: 7px 7px 0 7px var(--body-bg);
+  border-radius: 0 0 100vw 0;
 }
 .nav-list li.active::after {
-    right: calc(var(--border-radius) * -1);
-    bottom: 0;
-    box-shadow: -7px 7px 0 7px var(--body-bg);
-    border-radius: 0 0 0 100px;
+  right: calc(var(--border-radius) * -1);
+  bottom: 0;
+  box-shadow: -7px 7px 0 7px var(--body-bg);
+  border-radius: 0 0 0 100px;
 }
 
 .nav-list a {
-    box-sizing: border-box;
-    padding: 1rem 1.5rem 1rem 1.5rem;
-    color: rgb(42, 43, 46);
-    display: block;
-    text-decoration: none;
-    position: relative;
-    /* z-index: 10; */
+  box-sizing: border-box;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  color: rgb(42, 43, 46);
+  display: block;
+  text-decoration: none;
+  position: relative;
+  /* z-index: 10; */
 }
