@@ -5,10 +5,9 @@ const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
-    // rePass:
-})
+}, { timestamps: true })
 
-userSchema.pre('save', async function() {
+userSchema.pre('save', async function () {
     this.password = await bcrypt.hash(this.password, 12)
 })
 
