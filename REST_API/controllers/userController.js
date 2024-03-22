@@ -17,14 +17,24 @@ router.post('/register', async (req, res) => {
         const userData = req.body;
         const result = await userService.register(userData);
         
-        if (result) {
-            res.status(200).send({ message: 'Registration successful' });
+        if (process.env.NODE_ENV === 'production') {
+            res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: true })
         } else {
-            res.status(500).send({ message: 'Registration failed' });
+            res.cookie(authCookieName, token, { httpOnly: true })
         }
-    } catch (error) {
-        console.error('Registration error:', error);
-        res.status(500).send({ message: 'Internal server error' });
+        res.status(200)
+            .send(createdUser);
+    } catch (err) {
+        // TODO: this errors need to be in errorHandler
+        if (err.name === 'MongoError' && err.code === 11000) {
+            let field = err.message.split("index: ")[1];
+            field = field.split(" dup key")[0];
+            field = field.substring(0, field.lastIndexOf("_"));
+
+            res.status(409)
+                .send({ message: `This ${field} is already registered!` });
+            return;
+        }
     }
 });
 

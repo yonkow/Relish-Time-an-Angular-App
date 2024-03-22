@@ -1,21 +1,29 @@
 const User = require('../models/user');
-const jwt = require('jsonwebtoken');
+const jwt = require('../lib/jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { SECRET } = require('../config')
 
-// TODO: implement from older
-exports.register = async (userData) => {
-    // ! Comaring the passwords will be in Front-End
-    // if (userData.password !== userData.rePass) {
-    //     throw new Error('Password missmatch!');
-    // }
+exports.register = async (regData) => {
+    if (userData.password !== userData.rePass) {
+        throw new Error('Password missmatch!');
+    }
 
-    const user = await User.create(userData);
+    const user = await User.findOne({ email: regData.email });
 
-    return generateAccessToken(user);
+    if (user) {
+        throw new Error('User with this email is already exist...');
+    }
+
+
+    const createdUser = await User.create(regData);
+
+    const token = await generateAccessToken(createdUser);
+
+    return token;
 };
 
 exports.login = async (userData) => {
-    debugger;
+
     const user = await User.findOne({ email: userData.email });
 
     if (!user) {
@@ -32,18 +40,11 @@ exports.login = async (userData) => {
 };
 
 function generateAccessToken(user) {
-    // TODO: convert token - from older apps
-    const accessToken = jwt.sign(
-        {
-            _id: user._id,
-            email: user.email,
-        },
-        'thebestsecret'
-    );
-
-    return {
+    const payload = {
         _id: user._id,
         email: user.email,
-        accessToken,
+        username: user.username,
     };
-}
+
+    return jwt.sing(payload, SECRET, { expiresIn: '2h' });
+};

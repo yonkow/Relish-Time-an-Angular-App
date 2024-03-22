@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('../lib/jsonwebtoken')
 
-const SECRET = 'thebestsecret';
+const { SECRET } = require('../config');
 
-exports.authMiddleware = (req, res, next) => {
+exports.authMiddleware = async (req, res, next) => {
     const token = req.headers['x-authorization'];
 
     if (!token) {
@@ -10,7 +10,7 @@ exports.authMiddleware = (req, res, next) => {
     }
 
     try {
-        const decodedToken = jwt.verify(token, SECRET);
+        const decodedToken = await jwt.verify(token, SECRET);
 
         req.user = decodedToken;
 
