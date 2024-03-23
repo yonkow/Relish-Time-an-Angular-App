@@ -33,6 +33,8 @@ exports.login = async (userData) => {
     return {token: await generateAccessToken(user), user: user};
 };
 
+exports.findOne = async (userId) => await User.findById(userId, { password: 0, __v: 0 })
+
 function generateAccessToken(user) {
     const payload = {
         _id: user._id,

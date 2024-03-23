@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { RecipeBoxComponent } from './shared/recipe-box/recipe-box.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { appInterceptorProvider } from './app-inteceptor';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { appInterceptorProvider } from './app-inteceptor';
     HomeComponent,
     RecipeBoxComponent,
     FooterComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
