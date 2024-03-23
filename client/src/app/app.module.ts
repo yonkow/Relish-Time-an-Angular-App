@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { RecipeBoxComponent } from './shared/recipe-box/recipe-box.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { appInterceptorProvider } from './app-inteceptor';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { FooterComponent } from './core/footer/footer.component';
     UserModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,39 +4,39 @@ const bcrypt = require('bcrypt');
 const { SECRET } = require('../config')
 
 exports.register = async (regData) => {
-    if (userData.password !== userData.rePass) {
+
+    console.log('try passwords');
+    if (regData.password !== regData.rePassword) {
         throw new Error('Password missmatch!');
     }
 
     const user = await User.findOne({ email: regData.email });
-
+    
     if (user) {
+        console.log('user exist');
         throw new Error('User with this email is already exist...');
     }
-
-
+    
     const createdUser = await User.create(regData);
 
-    const token = await generateAccessToken(createdUser);
 
-    return token;
+    return {token: await generateAccessToken(createdUser), user: createdUser};
 };
 
 exports.login = async (userData) => {
-    //todo : or ID const user = await User.findOne({ _id: userData._id });
+
     const user = await User.findOne({ email: userData.email });
 
     if (!user) {
         throw new Error('No such user or password');
     }
-
     const isValid = await bcrypt.compare(userData.password, user.password);
 
     if (!isValid) {
         throw new Error('No such user or password');
     }
 
-    return generateAccessToken(user);
+    return {token: await generateAccessToken(user), user: user};
 };
 
 function generateAccessToken(user) {

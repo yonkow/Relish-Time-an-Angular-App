@@ -20,14 +20,14 @@
                 <p *ngIf="form.get('email')?.errors?.['email']" class="error">Email is invalid!</p>
             </ng-container>
 
-            <ng-container formGroupName="pass">
+            <ng-container formGroupName="passGroup">
                 <!-- password -->
                 <input type="password" formControlName="password" id="password" required minlength="4"
                     placeholder="Password" />
-                <ng-container *ngIf="form.get('pass')?.get('password')?.touched">
-                    <p *ngIf="form.get('pass')?.get('password')?.errors?.['required']" class="error">Password is
+                <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+                    <p *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']" class="error">Password is
                         required!</p>
-                    <p *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']" class="error">Password must be
+                    <p *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']" class="error">Password must be
                         at least 4 charactes!</p>
                 </ng-container>
 
@@ -35,14 +35,14 @@
                 <input type="password" formControlName="rePassword" id="rePassword" required
                     placeholder="Repeat Password" />
 
-                <ng-container *ngIf="form.get('pass')?.get('rePassword')?.touched">
-                    <p *ngIf="form.get('pass')?.get('rePassword')?.errors?.['required']" class="error">Password is required!</p>
-                    <p *ngIf="form.get('pass')?.errors?.['samePasswordsValidator']" class="error">Passwords missmatch!</p>
+                <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
+                    <p *ngIf="form.get('passGroup')?.get('rePassword')?.errors?.['required']" class="error">Password is required!</p>
+                    <p *ngIf="form.get('passGroup')?.errors?.['samePasswordsValidator']" class="error">Passwords missmatch!</p>
                 </ng-container>
 
             </ng-container>
 
-            <button [disabled]="form.invalid" class="app-button">Login</button>
+            <button [disabled]="form.invalid" class="app-button">Register</button>
             <div class="app-register">
                 Have an account? <a routerLink="/login">Sign In</a>
             </div>

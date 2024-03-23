@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
@@ -11,18 +12,21 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  testRegisterData(formData: any) {
-    const { apiUrl } = environment;
+  register(
+    username: string,
+    email: string,
+    password: string,
+    rePassword: string
+  ) {
+    return this.http.post<User>('/users/register', {
+      username,
+      email,
+      password,
+      rePassword,
+    });
+  }
 
-    let url = `${apiUrl}/users/register`;
-    return this.http
-      .post<object>(url, formData, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe((data) => {
-        if (data) {
-          this.router.navigate(['']);
-        }
-      });
+  login(email: string, password: string) {
+    return this.http.post<User>('/users/login', { email, password });
   }
 }
