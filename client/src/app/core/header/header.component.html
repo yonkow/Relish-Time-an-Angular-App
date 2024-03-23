@@ -1,24 +1,30 @@
 <div class="header">
-
-    <nav>
-        <h1 class="nav-title">RELISH TIME</h1>
-        <ul class="nav-list">
-            <li (click)="activeToggle($event)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a routerLink="/">Home</a>
-            </li>
-            <li (click)="activeToggle($event)" routerLinkActive="active">
-                <a routerLink="recipe/create">Create</a>
-            </li>
-            <li (click)="activeToggle($event)" routerLinkActive="active">
-                <a routerLink="/blog">Blog</a>
-            </li>
-            <li (click)="activeToggle($event)" routerLinkActive="active">
-                <a routerLink="user/register">Register</a>
-            </li>
-            <li (click)="activeToggle($event)" routerLinkActive="active">
-                <a routerLink="user/login">Login</a>
-            </li>
-        </ul>
-    </nav>
-
+  <nav>
+    <h1 class="nav-title">RELISH TIME</h1>
+    <ul class="nav-list">
+      <li
+        (click)="activeToggle($event)"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a routerLink="/">Home</a>
+      </li>
+      <li (click)="activeToggle($event)" routerLinkActive="active">
+        <a routerLink="recipe/create">Create</a>
+      </li>
+      <li (click)="activeToggle($event)" routerLinkActive="active">
+        <a routerLink="user/register">Register</a>
+      </li>
+      <li (click)="activeToggle($event)" routerLinkActive="active">
+        <a routerLink="user/login">Login</a>
+      </li>
+      <li
+        (click)="logout()"
+        (click)="activeToggle($event)"
+        routerLinkActive="active"
+      >
+        <a routerLink="user/logout">Logout</a>
+      </li>
+    </ul>
+  </nav>
 </div>

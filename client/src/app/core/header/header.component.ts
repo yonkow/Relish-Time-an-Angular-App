@@ -1,13 +1,19 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent{
-  constructor(private renderer: Renderer2, private element: ElementRef) {}
-
+export class HeaderComponent {
+  constructor(
+    private renderer: Renderer2,
+    private element: ElementRef,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   isActive: boolean = false;
 
@@ -18,9 +24,13 @@ export class HeaderComponent{
         item.classList.remove('active');
       });
     const target = e.currentTarget as HTMLElement;
-    
+
     target.classList.add('active');
 
     this.isActive = !this.isActive;
+  }
+
+  logout(): void {
+    this.userService.logout();
   }
 }

@@ -5,6 +5,15 @@ const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
+    createdRecipes: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Recipe'
+    }],
+    likedRecipes: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Recipe'
+    }],
+
 }, { timestamps: true })
 
 userSchema.pre('save', async function () {
