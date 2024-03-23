@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const userService = require('../services/userService')
+const userService = require('../services/authService')
 
 router.post('/register', async (req, res) => {
     try {
@@ -42,10 +42,10 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/logout', async (req, res) => {
+router.post('/logout', (req, res) => {
     res.clearCookie('auth-cookie')
-    res.status(200)
-    .json({message: 'logout successful'});
+    res.status(204)
+    .json({message: 'Logout successfuly!'});
 })
 
 

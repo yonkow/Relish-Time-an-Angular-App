@@ -15,6 +15,10 @@ const routes: Routes = [
       title: 'Relish Time App',
     },
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
   // {
   //   path: '**',
   //   redirectTo: '/404',

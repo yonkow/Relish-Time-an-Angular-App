@@ -1,30 +1,40 @@
 <div class="header">
   <nav>
     <h1 class="nav-title">RELISH TIME</h1>
-    <ul class="nav-list">
-      <li
-        (click)="activeToggle($event)"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="/">Home</a>
-      </li>
-      <li (click)="activeToggle($event)" routerLinkActive="active">
-        <a routerLink="recipe/create">Create</a>
-      </li>
-      <li (click)="activeToggle($event)" routerLinkActive="active">
-        <a routerLink="user/register">Register</a>
-      </li>
-      <li (click)="activeToggle($event)" routerLinkActive="active">
-        <a routerLink="user/login">Login</a>
-      </li>
-      <li
-        (click)="logout()"
-        (click)="activeToggle($event)"
-        routerLinkActive="active"
-      >
-        <a routerLink="user/logout">Logout</a>
-      </li>
+
+    <div class="nav-list">
+      <ul>
+        <li
+          (click)="activeToggle($event)"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a routerLink="/">Home</a>
+        </li>
+        <li (click)="activeToggle($event)" routerLinkActive="active">
+            <a routerLink="recipe/search">Search</a>
+        </li>
+      </ul>
+      <ul *ngIf="!isLoggedIn">
+        <li (click)="activeToggle($event)" routerLinkActive="active">
+            <a routerLink="/auth/register">Register</a>
+        </li>
+        <li (click)="activeToggle($event)" routerLinkActive="active">
+            <a routerLink="/auth/login">Login</a>
+        </li>
     </ul>
+    <ul *ngIf="isLoggedIn">
+        <li (click)="activeToggle($event)" routerLinkActive="active">
+          <a routerLink="recipe/create">Create</a>
+        </li>
+        <li
+          (click)="logout()"
+          (click)="activeToggle($event)"
+          routerLinkActive="active"
+        >
+          <a routerLink="/auth/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </div>

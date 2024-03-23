@@ -14,13 +14,17 @@ nav {
   padding: 5px 20px 0 20px;
 }
 
-.nav-list {
+.nav-list ul {
   margin: 0;
-  padding: 0 1em;
+  padding: 0;
   list-style: none;
-  display: flex;
+  display: inline-flex;
   /* justify-content: end; */
   gap: 0.5rem;
+}
+
+.nav-list ul:last-child {
+padding-right: 1em;
 }
 
 .nav-list li {
