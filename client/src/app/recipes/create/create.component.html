@@ -1,1 +1,126 @@
-<p>create works!</p>
+<form [formGroup]="form" class="example-form" (ngSubmit)="createHandler()">
+  <div id="app">
+    <ng-container *ngIf="form.get('name')?.touched">
+      <p *ngIf="form.get('name')?.errors?.['required']" class="error">
+        Recipe name is required!
+      </p>
+      <p *ngIf="form.get('name')?.errors?.['minlength']" class="error">
+        Recipe name should be at least 3 charactes!
+      </p>
+      <p *ngIf="form.get('name')?.errors?.['maxlength']" class="error">
+        Recipe name should be with maximum length 30 charactes!
+      </p>
+    </ng-container>
+    <mat-form-field class="example-full-width">
+      <mat-label>Recipe name</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        required
+        minlength="3"
+        maxlength="30"
+      />
+      <mat-icon matSuffix color="primary">menu_book</mat-icon>
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <ng-container *ngIf="form.get('mealType')?.touched">
+            <p *ngIf="form.get('mealType')?.errors?.['required']" class="error">
+              Meal type is required!
+            </p>
+          </ng-container>
+          <mat-form-field class="example-full-width">
+            <mat-label>Meal Type</mat-label>
+            <mat-select matInput formControlName="mealType" required>
+              <mat-option value="bereakfast">Bereakfast</mat-option>
+              <mat-option value="lunch">Lunch</mat-option>
+              <mat-option value="brunch">Brunch</mat-option>
+              <mat-option value="dinner">Dinner</mat-option>
+              <mat-option value="dessert">Dessert</mat-option>
+            </mat-select>
+            <mat-icon matSuffix color="primary">restaurant_menu</mat-icon>
+          </mat-form-field>
+        </td>
+        <td>
+          <ng-container *ngIf="form.get('level')?.touched">
+            <p *ngIf="form.get('level')?.errors?.['required']" class="error">
+              Difficult level is required!
+            </p>
+          </ng-container>
+          <mat-form-field class="example-full-width">
+            <mat-label>Difficult level</mat-label>
+            <mat-select matInput formControlName="level" required>
+              <mat-option value="beginner">Beginner</mat-option>
+              <mat-option value="intermediate">Intermediate</mat-option>
+              <mat-option value="master">Master</mat-option>
+            </mat-select>
+            <mat-icon matSuffix color="primary">trending_up</mat-icon>
+          </mat-form-field>
+        </td>
+        <td>
+          <ng-container *ngIf="form.get('time')?.touched">
+            <p *ngIf="form.get('time')?.errors?.['required']" class="error">
+              Prep time is required!
+            </p>
+            <p *ngIf="form.get('time')?.errors?.['min']" class="error">
+              Prep time should be at least 5 minutes!
+            </p>
+          </ng-container>
+          <mat-form-field class="example-full-width">
+            <mat-label>Preparation Time (min)</mat-label>
+            <input matInput required type="number" formControlName="time" min="5"/>
+            <mat-icon matSuffix color="primary">hourglass_top</mat-icon>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <ng-container *ngIf="form.get('description')?.touched">
+        <p *ngIf="form.get('description')?.errors?.['required']" class="error">
+          Description is required!
+        </p>
+        <p *ngIf="form.get('description')?.errors?.['minlength'] || form.get('description')?.errors?.['maxlength'] " class="error">
+          Description length should be between 5 and 500 characters!
+        </p>
+      </ng-container>
+      <mat-form-field class="example-full-width">
+        <mat-label>Cooking Decription</mat-label>
+        <textarea matInput formControlName="description" required minlength="5" maxlength="500"></textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Ingredients - separate with comma (Optional)</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </p>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <ng-container *ngIf="form.get('image')?.touched">
+            <p *ngIf="form.get('image')?.errors?.['required']" class="error">
+              Image URL is required!
+            </p>
+            <!-- <p *ngIf="form.get('image')?.errors?.['minlength'] || form.get('description')?.errors?.['maxlength'] " class="error">
+              Description length should be between 5 and 500 characters!
+            </p> -->
+          </ng-container>
+          <mat-form-field class="example-full-width">
+            <mat-label>Image URL:</mat-label>
+            <input matInput placeholder="http://..."  required formControlName="image" />
+            <mat-hint>Insert only http/https urls.</mat-hint>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Calories (optional)</mat-label>
+            <input matInput type="number" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Submit</button>
+  </div>
+</form>

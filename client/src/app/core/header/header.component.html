@@ -25,7 +25,7 @@
     </ul>
     <ul *ngIf="isLoggedIn">
         <li (click)="activeToggle($event)" routerLinkActive="active">
-          <a routerLink="recipe/create">Create</a>
+          <a routerLink="/recipe/create">Create</a>
         </li>
         <li
           (click)="logout()"

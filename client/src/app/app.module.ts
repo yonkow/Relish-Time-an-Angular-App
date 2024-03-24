@@ -12,6 +12,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { appInterceptorProvider } from './app-inteceptor';
 import { AuthComponent } from './auth/auth.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]

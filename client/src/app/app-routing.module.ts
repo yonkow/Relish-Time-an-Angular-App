@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
+    path: 'recipe',
+    loadChildren: () => import('./recipes/recipe.module').then((m) => m.RecipesModule),
+  },
+  {
     path: '**',
     redirectTo: '/404',
   },

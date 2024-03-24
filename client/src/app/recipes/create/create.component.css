@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  display: block;
+  min-width: 70vw;
+  min-height: 50vh;
+  margin: 0 auto;
+
+  padding: 1em;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 1.3em 2em;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 2em 0 0.1em 0;
+}
+
+.example-form {
+  margin: 5em auto;
+  width: 80%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+.error {
+  font-style: italic;
+  font-size: 12px;
+  color: red;
+}

@@ -1,5 +1,4 @@
-import { group } from '@angular/animations';
-import { FormGroup, FormRecord, ValidatorFn } from '@angular/forms';
+import { FormGroup, ValidatorFn } from '@angular/forms';
 
 export function samePasswordsValidator(
   password: string,
