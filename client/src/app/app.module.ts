@@ -11,6 +11,7 @@ import { RecipeBoxComponent } from './shared/recipe-box/recipe-box.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { appInterceptorProvider } from './app-inteceptor';
 import { AuthComponent } from './auth/auth.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AuthComponent } from './auth/auth.component';
     RecipeBoxComponent,
     FooterComponent,
     AuthComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
