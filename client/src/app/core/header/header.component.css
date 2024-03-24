@@ -2,11 +2,11 @@ nav {
   position: sticky;
   top: 0;
   max-width: 100svw;
-
   background-color: var(--nav-bg);
-
   display: flex;
+  text-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-title {

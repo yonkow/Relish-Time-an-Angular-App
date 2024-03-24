@@ -49,14 +49,20 @@ router.post('/logout', (req, res) => {
         .json({ message: 'Logout successfuly!' });
 })
 
-router.get('/profile', authMiddleware, async (req, res) => {
-    const { _id: userId} = req.user;
+router.get('/profile', authMiddleware, async (req, res, next) => {
+    if (!req.user) {
+        res.status(204).json({})
+        return next();
+    }
+
+    const { _id: userId } = req.user;
+
     try {
         const user = await authService.findOne(userId)
         res.status(200).json(user)
     }
-    catch {
-        next
+    catch (err) {
+        next()
     }
 })
 
