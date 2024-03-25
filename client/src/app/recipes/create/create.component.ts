@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormsModule, Validators } from '@angular/forms';
+import { RecipeService } from '../recipe.service';
+import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -8,17 +11,28 @@ import { FormBuilder, FormsModule, Validators } from '@angular/forms';
 })
 export class CreateComponent {
   form = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    name: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(30)],
+    ],
     level: ['', [Validators.required]],
     mealType: ['', [Validators.required]],
     time: [0, [Validators.required, Validators.min(5)]],
-    ingredients: [[]],
-    description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]],
+    ingredients: [[], Validators.required],
+    description: [
+      '',
+      [Validators.required, Validators.minLength(5), Validators.maxLength(500)],
+    ],
     calories: [''],
-    image: ['', [Validators.required, ]] // TODO: match /^https?:\/\//, message: 'URL should be in valid format http/https...'
-  })
+    image: ['', [Validators.required]], // TODO: match /^https?:\/\//, message: 'URL should be in valid format http/https...'
+  });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private recipeService: RecipeService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   createHandler() {
     if (this.form.invalid) {
@@ -26,17 +40,31 @@ export class CreateComponent {
     }
 
     console.log('done');
-    
-    // const {
-    //   username,
-    //   email,
-    //   passGroup: { password, rePassword } = {},
-    // } = this.form.value;
 
-    // this.userService
-    //   .register(username!, email!, password!, rePassword!)
-    //   .subscribe(() => {
-    //     this.router.navigate([''])
-    //   });
+    const {
+      name,
+      level,
+      mealType,
+      time,
+      ingredients,
+      description,
+      calories,
+      image,
+    } = this.form.value;
+
+    this.recipeService
+      .create(
+        name!,
+        level!,
+        mealType!,
+        time!,
+        ingredients!,
+        description!,
+        calories!,
+        image!
+      )
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      });
   }
 }

@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
-const User = require('./user');
 
 const commentSchema = new mongoose.Schema({
     text: String,
     author: {
         type: mongoose.Types.ObjectId,
-        ref: User
+        ref: 'User'
     },
     likesComment: [{
         type: mongoose.Types.ObjectId,
-        ref: User
+        ref: 'User'
     }]
 }, {timestamps: true})
 

@@ -5,13 +5,11 @@ const { SECRET } = require('../config')
 
 exports.register = async (regData) => {
 
-    console.log('try passwords');
     if (regData.password !== regData.rePassword) {
         throw new Error('Password missmatch!');
     }
     const user = await User.findOne({ email: regData.email });
     if (user) {
-        console.log('user exist');
         throw new Error('User with this email is already exist...');
     }
 

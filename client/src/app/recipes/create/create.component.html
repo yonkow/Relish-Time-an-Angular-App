@@ -83,16 +83,21 @@
           Description is required!
         </p>
         <p *ngIf="form.get('description')?.errors?.['minlength'] || form.get('description')?.errors?.['maxlength'] " class="error">
-          Description length should be between 5 and 500 characters!
+          Description length should be between 5 and 3000 characters!
         </p>
       </ng-container>
       <mat-form-field class="example-full-width">
         <mat-label>Cooking Decription</mat-label>
-        <textarea matInput formControlName="description" required minlength="5" maxlength="500"></textarea>
+        <textarea matInput formControlName="description" required minlength="5" maxlength="3000"></textarea>
       </mat-form-field>
+      <ng-container *ngIf="form.get('ingredients')?.touched">
+        <p *ngIf="form.get('ingredients')?.errors?.['required']" class="error">
+          Description is required!
+        </p>
+      </ng-container>
       <mat-form-field class="example-full-width">
-        <mat-label>Ingredients - separate with comma (Optional)</mat-label>
-        <textarea matInput></textarea>
+        <mat-label>Ingredients - separate with comma</mat-label>
+        <textarea matInput formControlName="ingredients" required></textarea>
       </mat-form-field>
     </p>
 
@@ -116,7 +121,7 @@
         <td>
           <mat-form-field class="example-full-width">
             <mat-label>Calories (optional)</mat-label>
-            <input matInput type="number" />
+            <input matInput type="number" formControlName="calories" />
           </mat-form-field>
         </td>
       </tr>

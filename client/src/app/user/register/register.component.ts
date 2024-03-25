@@ -40,8 +40,5 @@ export class RegisterComponent {
 
     this.userService
       .register(username!, email!, password!, rePassword!)
-      .subscribe(() => {
-        this.router.navigate([''])
-      });
   }
 }

@@ -21,7 +21,7 @@ html {
 body {
     position: relative;
     font: inherit;
-    min-height: 100vh;
+    min-height: 150vh;
     margin: 0;
     /* font-size: 20px; */
     background: var(--body-bg);
