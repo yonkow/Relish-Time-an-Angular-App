@@ -32,7 +32,9 @@ export class UserService implements OnDestroy {
     password: string,
     rePassword: string
   ) {
-    return this.http
+    debugger;
+
+    const data = this.http
       .post<User>('/auth/register', {
         username,
         email,
@@ -44,6 +46,9 @@ export class UserService implements OnDestroy {
           this.user$$.next(user);
         })
       );
+
+    console.log(data);
+    return data;
   }
 
   login(email: string, password: string) {
@@ -55,7 +60,6 @@ export class UserService implements OnDestroy {
   }
 
   logout() {
-    console.log('service');
     return this.http.post<User>('/auth/logout', {}).pipe(
       tap(() => {
         this.user$$.next(undefined);

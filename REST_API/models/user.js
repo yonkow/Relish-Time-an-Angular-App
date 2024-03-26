@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Recipe'
     }],
+    comentedRecipes: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Recipe'
+    }]
 
 }, { timestamps: true })
 

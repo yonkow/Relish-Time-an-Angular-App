@@ -1,12 +1,13 @@
 import { User } from "./user";
 
 export interface Recipe {
+    _id: string,
     name: string,
     level: string,
     mealType: string,
-    prepTime: number,
+    time: number,
     ingredients: string[],
-    img: string,
+    image: string,
     description: string,
     calories: string,
     owner: User,

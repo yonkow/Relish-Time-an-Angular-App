@@ -7,6 +7,7 @@ export interface User {
     password: string;
     createdRecipes: Recipe[]; //! Recipe
     likedRecipes: Recipe[]; //! Recipe
+    comentedRecipes: Recipe[]; //! Recipe
     createdAt: Date;
     updatedAt: Date;
 }
