@@ -3,16 +3,13 @@ import { Injectable } from '@angular/core';
 import { UserService } from '../user/user.service';
 import { Recipe } from '../types/recipe';
 import { Router } from '@angular/router';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  constructor(
-    private http: HttpClient,
-    private userService: UserService,
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient) {}
 
   create(
     name: string,
@@ -22,18 +19,23 @@ export class RecipeService {
     ingredients: string,
     description: string,
     calories: string,
-    image: string
+    image: string,
+    user: User
   ) {
-    return this.http
-      .post<Recipe>('/recipes/create', {
-        name,
-        level,
-        mealType,
-        time,
-        ingredients,
-        image,
-        description,
-        calories,
-      })
+    return this.http.post<Recipe>('/recipes/create', {
+      name,
+      level,
+      mealType,
+      time,
+      ingredients,
+      image,
+      description,
+      calories,
+      owner: user,
+    });
+  }
+
+  likeRecipe(recipeId: string, user: User) {
+    return this.http.put<string>(`/recipes/${recipeId}/like`, { user });
   }
 }

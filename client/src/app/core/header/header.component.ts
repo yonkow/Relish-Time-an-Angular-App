@@ -38,8 +38,6 @@ export class HeaderComponent {
   }
 
   logout(): void {
-    console.log('click');
-
     this.userService.logout().subscribe({
       next: () => this.router.navigate(['/auth/login']),
       error: () => this.router.navigate(['/auth/login']),

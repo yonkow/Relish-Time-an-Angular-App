@@ -3,6 +3,7 @@ import { FormBuilder, FormsModule, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/types/user';
 
 @Component({
   selector: 'app-create',
@@ -21,7 +22,11 @@ export class CreateComponent {
     ingredients: [[], Validators.required],
     description: [
       '',
-      [Validators.required, Validators.minLength(5), Validators.maxLength(500)],
+      [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(3000),
+      ],
     ],
     calories: [''],
     image: ['', [Validators.required]], // TODO: match /^https?:\/\//, message: 'URL should be in valid format http/https...'
@@ -39,7 +44,7 @@ export class CreateComponent {
       return;
     }
 
-    console.log('done');
+    const user = this.userService.user;
 
     const {
       name,
@@ -61,10 +66,11 @@ export class CreateComponent {
         ingredients!,
         description!,
         calories!,
-        image!
+        image!,
+        user as User
       )
       .subscribe(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
       });
   }
 }

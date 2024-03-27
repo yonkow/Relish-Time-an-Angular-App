@@ -6,26 +6,35 @@ router.get('/', async (req, res) => {
         const recipes = await recipeService.getAll()
             .populate('owner')
             .populate('likes')
-            .populate('comments')
-        console.log(recipes);
-        res.status(200).json(recipes)
+        res.status(200).send(recipes)
     } catch (err) {
-        res.status(409).send({ message: `${err.message}` });
-        return;
+        res.status(409).send({ message: `${err}` });
     }
 })
 
 router.post('/create', async (req, res) => {
-    const owner = req.user._id;
+
+    const user = req.body.owner;
     const recipeData = req.body;
 
     try {
-        await recipeService.createRecipe(recipeData);
-        res.status(200).json({message: 'success'})
+        await recipeService.createRecipe(recipeData, user);
+        res.status(200).json({ message: 'success' })
     } catch (err) {
         res.status(409).send({ message: `${err.message}` });
-        return;
     }
 });
+
+router.put('/:recipeId/like', async (req, res) => {
+
+    try {
+        const recipeId = req.params['recipeId']
+        const recipe = await recipeService.like(recipeId, req.body.user);
+
+        res.status(200).send(recipe);
+    } catch (err) {
+        res.status(409).send({ message: `${err.message}` });
+    }
+})
 
 module.exports = router;

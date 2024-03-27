@@ -5,7 +5,7 @@
                 <div class="image">
                     <img src="{{recipe.image}}" alt="{{recipe.name}}" />
                 </div>
-                <button [disabled]="isOwner(recipe.owner.id)" (click)="like(recipe._id, recipe.likes)" class="button"><i class="fa-regular fa-heart"></i></button>
+                <button [disabled]="isOwner(recipe.owner._id) || isAlreadyLikeIt(recipe.likes)" (click)="like(recipe._id)" class="button"><i class="fa-regular fa-heart"></i></button>
             </aside>
     
             <article>

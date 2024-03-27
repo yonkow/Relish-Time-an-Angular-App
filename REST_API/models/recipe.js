@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./user')
 
 const recipeSchema = new mongoose.Schema({
     name: String,
@@ -17,10 +18,6 @@ const recipeSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     }],
-    comments: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Comment'
-    }]
 }, {timestamps: true})
 
 const Recipe = mongoose.model('Recipe', recipeSchema);

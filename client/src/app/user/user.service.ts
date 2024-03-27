@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
@@ -22,7 +21,11 @@ export class UserService implements OnDestroy {
 
   constructor(private http: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => {
+      console.log(this.user)
+      console.log(user)
+      
       this.user = user;
+      console.log(this.user)
     });
   }
 
@@ -32,8 +35,6 @@ export class UserService implements OnDestroy {
     password: string,
     rePassword: string
   ) {
-    debugger;
-
     const data = this.http
       .post<User>('/auth/register', {
         username,
@@ -47,7 +48,6 @@ export class UserService implements OnDestroy {
         })
       );
 
-    console.log(data);
     return data;
   }
 

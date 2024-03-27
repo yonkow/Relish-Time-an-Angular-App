@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { RecipeService } from 'src/app/recipes/recipe.service';
 import { Recipe } from 'src/app/types/recipe';
 import { User } from 'src/app/types/user';
 import { UserService } from 'src/app/user/user.service';
@@ -13,13 +14,17 @@ import { UserService } from 'src/app/user/user.service';
 export class RecipeBoxComponent implements OnInit {
   recipes: Recipe[] = [];
 
-  constructor(private api: ApiService, private userService: UserService, private router: Router) {}
+  constructor(
+    private api: ApiService,
+    private recipeService: RecipeService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.api.getRecipesDateOrdered().subscribe({
       next: (recipes) => {
         this.recipes = recipes;
-        console.log(recipes);
       },
       error: (err) => {
         console.error('Error: ', err);
@@ -27,9 +32,9 @@ export class RecipeBoxComponent implements OnInit {
     });
   }
 
-  like(recipeId: string, likes:User[]) {
-    likes.push(this.userService.user as User)
-    this.api.likeRecipe(recipeId, likes).subscribe({
+  like(recipeId: string) {
+    const user = this.userService.user;
+    this.recipeService.likeRecipe(recipeId, user as User).subscribe({
       next: () => this.router.navigate(['']),
       error: (err) => {
         console.error('Error: ', err);
@@ -38,9 +43,13 @@ export class RecipeBoxComponent implements OnInit {
   }
 
   isOwner(recipeOwner: string) {
-    if (recipeOwner === this.userService.user?.id) {
-      return false;
+    if (recipeOwner === this.userService.user?._id) {
+      return true;
     }
-    return true;
+    return false;
+  }
+
+  isAlreadyLikeIt(likes: User[]) {
+    return likes.some((element) => element._id === this.userService.user?._id);
   }
 }

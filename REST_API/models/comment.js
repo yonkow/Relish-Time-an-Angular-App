@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
     text: String,
-    owner: {
+    commentOwner: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-    likesComment: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
-    }],
     recipe: {
         type: mongoose.Types.ObjectId,
         ref: 'Recipe'
-    }
-}, {timestamps: true})
+    },
+    commentLikes: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }],
+})
 
-const Comment = mongoose.model('Comment', commentSchema);
+const Comment = mongoose.model('comments', commentSchema)
 
 module.exports = Comment
