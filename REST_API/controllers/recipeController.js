@@ -18,7 +18,6 @@ router.get('/:recipeId', async (req, res) => {
         const recipe = await recipeService.getOne(recipeId)
             .populate('owner')
             .populate('likes')
-            .populate('comments')
         res.status(200).send(recipe)
     } catch (err) {
         res.status(409).send({ message: `${err}` });

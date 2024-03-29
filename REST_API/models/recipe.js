@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const User = require('./user')
 
 const recipeSchema = new mongoose.Schema({
     name: String,
