@@ -38,4 +38,8 @@ export class RecipeService {
   likeRecipe(recipeId: string, user: User) {
     return this.http.put<string>(`/recipes/${recipeId}/like`, { user });
   }
+
+  getOneRecipe(recipeId: string) {
+    return this.http.get<Recipe>(`recipes/${recipeId}`)
+  }
 }

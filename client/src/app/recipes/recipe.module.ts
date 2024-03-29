@@ -8,12 +8,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 
 
 @NgModule({
   declarations: [
     CreateComponent,
+    RecipeDetailsComponent,
   ],
   imports: [
     CommonModule,

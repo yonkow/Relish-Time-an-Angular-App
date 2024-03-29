@@ -52,4 +52,8 @@ export class RecipeBoxComponent implements OnInit {
   isAlreadyLikeIt(likes: User[]) {
     return likes.some((element) => element._id === this.userService.user?._id);
   }
+
+  recipeDetails() {
+    this.router.navigate(['recipe/details'])
+  }
 }

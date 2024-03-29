@@ -20,10 +20,7 @@ export class UserService implements OnDestroy {
   }
 
   constructor(private http: HttpClient) {
-    this.userSubscription = this.user$.subscribe((user) => {
-      console.log(this.user)
-      console.log(user)
-      
+    this.userSubscription = this.user$.subscribe((user) => {      
       this.user = user;
       console.log(this.user)
     });

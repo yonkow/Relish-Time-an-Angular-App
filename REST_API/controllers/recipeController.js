@@ -12,6 +12,19 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:recipeId', async (req, res) => {
+    const recipeId = req.params['recipeId']
+    try {
+        const recipe = await recipeService.getOne(recipeId)
+            .populate('owner')
+            .populate('likes')
+            .populate('comments')
+        res.status(200).send(recipe)
+    } catch (err) {
+        res.status(409).send({ message: `${err}` });
+    }
+})
+
 router.post('/create', async (req, res) => {
 
     const user = req.body.owner;

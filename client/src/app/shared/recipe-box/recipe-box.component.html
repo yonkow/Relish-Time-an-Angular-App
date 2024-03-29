@@ -1,6 +1,6 @@
 <div class="box-container">
     <div class="container">
-        <div class="recipe-card" *ngFor="let recipe of recipes">
+        <div [routerLink]="recipe._id" class="recipe-card" *ngFor="let recipe of recipes">
             <aside>
                 <div class="image">
                     <img src="{{recipe.image}}" alt="{{recipe.name}}" />

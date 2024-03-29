@@ -3,6 +3,8 @@ const User = require('../models/user');
 
 exports.getAll = () => Recipe.find().sort({ 'createdAt': -1 });
 
+exports.getOne = (recipeId) => Recipe.findById(recipeId);
+
 exports.createRecipe = async (recipeData, user) => {
     const recipe = await Recipe.create(recipeData);
 
