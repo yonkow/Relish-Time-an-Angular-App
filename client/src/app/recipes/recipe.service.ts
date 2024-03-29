@@ -40,6 +40,6 @@ export class RecipeService {
   }
 
   getOneRecipe(recipeId: string) {
-    return this.http.get<Recipe>(`recipes/${recipeId}`)
+    return this.http.get<Recipe>(`/recipes/${recipeId}`);
   }
 }

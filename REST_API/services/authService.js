@@ -40,5 +40,5 @@ function generateAccessToken(user) {
         username: user.username,
     };
 
-    return jwt.sing(payload, SECRET, { expiresIn: '2h' });
+    return jwt.sing(payload, SECRET, { expiresIn: '1d' });
 };

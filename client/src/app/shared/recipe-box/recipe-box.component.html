@@ -1,6 +1,7 @@
 <div class="box-container">
     <div class="container">
-        <div [routerLink]="recipe._id" class="recipe-card" *ngFor="let recipe of recipes">
+        <div class="recipe-card" *ngFor="let recipe of recipes">
+          <a [routerLink]="'recipes/' + recipe._id">
             <aside>
                 <div class="image">
                     <img src="{{recipe.image}}" alt="{{recipe.name}}" />
@@ -28,6 +29,7 @@
                 <!-- <p class="ingredients"><span>Ingredients:&nbsp;</span>Milk, salt, coriander, cardamom, cinnamon, turmeric,
                     honey, vanilla extract, regular oats, oat bran.</p> -->
             </article>
+          </a>
         </div>
 
     </div>

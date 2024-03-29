@@ -20,7 +20,8 @@ export class UserService implements OnDestroy {
   }
 
   constructor(private http: HttpClient) {
-    this.userSubscription = this.user$.subscribe((user) => {      
+    this.userSubscription = this.user$
+    .subscribe((user) => {      
       this.user = user;
       console.log(this.user)
     });
@@ -33,34 +34,22 @@ export class UserService implements OnDestroy {
     rePassword: string
   ) {
     const data = this.http
-      .post<User>('/auth/register', {
-        username,
-        email,
-        password,
-        rePassword,
-      })
-      .pipe(
-        tap((user) => {
-          this.user$$.next(user);
-        })
-      );
+      .post<User>('/auth/register', { username, email, password, rePassword, })
+      .pipe(tap((user) => {this.user$$.next(user)}));
 
     return data;
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('/auth/login', { email, password }).pipe(
-      tap((user) => {
-        this.user$$.next(user);
-      })
-    );
+    return this.http
+    .post<User>('/auth/login', { email, password })
+    .pipe(tap((user) => {this.user$$.next(user)}))
   }
 
   logout() {
-    return this.http.post<User>('/auth/logout', {}).pipe(
-      tap(() => {
-        this.user$$.next(undefined);
-      })
+    return this.http
+    .post<User>('/auth/logout', {})
+    .pipe(tap(() => {this.user$$.next(undefined)})
     );
   }
 

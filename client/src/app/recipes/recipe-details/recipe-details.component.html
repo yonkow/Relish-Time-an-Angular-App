@@ -1,143 +1,109 @@
 <section class="single-page-recipe spad">
-    <div class="recipe-top">
-        <div class="container-fluid">
-            <div class="recipe-title">
-                <span>~ 5 ingredients / 20 minutes / easy / japanese/ recipe</span>
-                <h2>Chipotle Sweet Potato Noodle Salad <br /> with Roasted Corn</h2>
-                <ul class="tags">
-                    <li>Desert</li>
-                    <li>Asian</li>
-                    <li>Spicy</li>
+  <div class="recipe-top">
+    <div class="container-fluid">
+      <div class="recipe-title">
+        <span
+          >~ {{ recipe?.ingredients?.length }} ingredients /
+          {{ recipe?.time }} minutes / {{ recipe?.level }} / recipe</span
+        >
+        <h2>{{ recipe?.name }}</h2>
+        <ul class="tags">
+          <li>{{ recipe?.mealType }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="ingredients-item">
+          <div class="intro-item">
+            <img src="{{ recipe?.image }}" alt="{{ recipe?.name }}" />
+            <h2>{{ recipe?.name }}</h2>
+            <div class="rating">
+              <i class="fa fa-heart"> {{ recipe?.likes?.length }} likes</i>
+            </div>
+            <div class="reviews">Since: {{ recipe?.createdAt | date }}</div>
+            <div class="recipe-time">
+              <ul>
+                <li>
+                  Prep time: <span>{{ recipe?.time }} min</span>
+                </li>
+                <li>
+                  Chalories: <span>{{ recipe?.calories }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="ingredient-list">
+            <div class="recipe-btn">
+              <a href="#">Edit</a>
+              <!-- TODO  -->
+              <a href="#" class="black-btn">Delete</a>
+              <!-- TODO  -->
+            </div>
+            <div class="list-item">
+              <h5>Ingredients</h5>
+              <div class="salad-list">
+                <h6>For the recipe</h6>
+                <ul>
+                  <li *ngFor="let ingr of recipe?.ingredients">{{ingr}}</li>
                 </ul>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="ingredients-item">
-                    <div class="intro-item">
-                        <img src="img/intro-img.jpg" alt="">
-                        <h2>Chipotle Sweet Potato Noodle with Roasted Corn</h2>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="reviews">4.9 from 25 reviews</div>
-                        <div class="recipe-time">
-                            <ul>
-                                <li>Prep time: <span>10 min</span></li>
-                                <li>Cook time: <span>10 min</span></li>
-                                <li>Chalories: <span>345</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="ingredient-list">
-                        <div class="recipe-btn">
-                            <a href="#">Edit</a>
-                            <a href="#" class="black-btn">Delete</a>
-                        </div>
-                        <div class="list-item">
-                            <h5>Ingredients</h5>
-                            <div class="salad-list">
-                                <h6>For the recipe</h6>
-                                <ul>
-                                    <li>1 brick of frozen udon</li>
-                                    <li>1/2 cup kimchi, plus a bit of kimchi juice</li>
-                                    <li>1 tablespoon of butter</li>
-                                    <li>1 sac of mentaiko</li>
-                                    <li>sliced green onions and nori, to finish</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nutrition-fact">
-                    <div class="nutri-title">
-                        <h5>Liked by: </h5>
-                        <ul>
-                            <li>email, </li>
-                            <li>email, </li>
-                            <li>email, </li>
-                        </ul>
-                    </div>
-                    <ul>
-                        <li>Author: </li>
-                        <li>name</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="recipe-right">
-                    <div class="instruction-list">
-                        <h3>Instructions</h3>
-                        <ul>
-                            <li>
-                                <span>01.</span>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                                sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                                sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                                volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                                condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                                porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.
-                            </li>
-                            <li>
-                                <span>02.</span>
-                                Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.
-                                Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,
-                                maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non
-                                auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,
-                                ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.
-                                Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis
-                                lacus, non rutrum diam volutpat id.
-                            </li>
-                            <li>
-                                <span>03.</span>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                                sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                                sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                                volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                                condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                                porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.
-                            </li>
-                            <li>
-                                <span>04.</span>
-                                Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.
-                                Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,
-                                maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non
-                                auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,
-                                ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.
-                                Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis
-                                lacus, non rutrum diam volutpat id.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="notes">
-                        <h3>Comments</h3>
-                        <div class="notes-item">
-                            <span>i</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                                sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                                sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                                volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                                condimentum viverra.</p>
-                        </div>
-                        <div class="notes-item">
-                            <span>i</span>
-                            <p>Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin
-                                neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non,
-                                ultricies volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at
-                                elit condimentum viverra.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="nutrition-fact">
+          <div class="nutri-title">
+            <h5>Liked by:</h5>
+            <ul>
+              <li *ngFor="let like of recipe?.likes">{{like.email || ''}}</li>
+            </ul>
+          </div>
+          <ul>
+            <li>Author:</li>
+            <li>{{recipe?.owner?.username}}</li>
+          </ul>
         </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="recipe-right">
+          <div class="instruction-list">
+            <h3>Instructions</h3>
+            <ul>
+              <li *ngFor="let step of descriptionArr; let i = index">
+                <span>Step {{i+1}}</span>
+                {{step}}
+              </li>
+            </ul>
+          </div>
+          <div class="notes">
+            <h3>Comments</h3>
+            <div class="notes-item">
+              <span>i</span>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet. Donec in sodales dui, a blandit
+                nunc. Pellentesque id eros venenatis, sollicitudin neque
+                sodales, vehicula nibh. Nam massa odio, porttitor vitae
+                efficitur non, ultricies volutpat tellus. Cras egestas in lacus
+                a finibus. Suspendisse sed urna at elit condimentum viverra.
+              </p>
+            </div>
+            <div class="notes-item">
+              <span>i</span>
+              <p>
+                Donec in sodales dui, a blandit nunc. Pellentesque id eros
+                venenatis, sollicitudin neque sodales, vehicula nibh. Nam massa
+                odio, porttitor vitae efficitur non, ultricies volutpat tellus.
+                Cras egestas in lacus a finibus. Suspendisse sed urna at elit
+                condimentum viverra.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

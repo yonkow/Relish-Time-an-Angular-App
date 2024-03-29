@@ -11,6 +11,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined;
+  descriptionArr: string[] | undefined;
 
   constructor(
     private recipeService: RecipeService,
@@ -27,14 +28,18 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   fetchRecipe(): void {
-    console.log('click');
-    
     const recipeId = this.activatedRoute.snapshot.params['recipeId'];
 
     this.recipeService.getOneRecipe(recipeId).subscribe((currentRecipe) => {
+      this.regroup(currentRecipe);
       this.recipe = currentRecipe;
       console.log(this.recipe);
-      
     });
+  }
+
+  regroup(currentRecipe: Recipe): void {
+    const ingredients = currentRecipe.ingredients.toString();
+    currentRecipe.ingredients = ingredients.split('\n');
+    this.descriptionArr = currentRecipe.description.split('\n');
   }
 }
