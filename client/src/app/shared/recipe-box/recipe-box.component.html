@@ -1,17 +1,18 @@
 <div class="box-container">
     <div class="container">
         <div class="recipe-card" *ngFor="let recipe of recipes">
-          <a [routerLink]="'recipes/' + recipe._id">
+          
             <aside>
                 <div class="image">
                     <img src="{{recipe.image}}" alt="{{recipe.name}}" />
                 </div>
-                <button [disabled]="isOwner(recipe.owner._id) || isAlreadyLikeIt(recipe.likes)" (click)="like(recipe._id)" class="button"><i class="fa-regular fa-heart"></i></button>
+                <button [disabled]="isOwner(recipe.owner._id) || isAlreadyLikeIt(recipe.likes)" (click)="like(recipe._id, recipe.likes)" class="button"><i class="fa-regular fa-heart"></i></button>
             </aside>
-    
+        
+        <a [routerLink]="'recipes/' + recipe._id">
             <article>
                 <h2>{{recipe.name}}</h2>
-                <h3>{{recipe.mealType}}</h3>
+                <h3 class="uppercase">{{recipe.mealType}}</h3>
     
                 <ul>
                     <li><i class="fa-solid fa-heart"></i><span>{{recipe.likes.length}}</span></li>
@@ -29,7 +30,7 @@
                 <!-- <p class="ingredients"><span>Ingredients:&nbsp;</span>Milk, salt, coriander, cardamom, cinnamon, turmeric,
                     honey, vanilla extract, regular oats, oat bran.</p> -->
             </article>
-          </a>
+        </a>
         </div>
 
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { RecipeService } from 'src/app/recipes/recipe.service';
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './recipe-box.component.html',
   styleUrls: ['./recipe-box.component.scss'],
 })
-export class RecipeBoxComponent implements OnInit {
+export class RecipeBoxComponent implements OnInit, OnChanges {
   recipes: Recipe[] = [];
 
   constructor(
@@ -20,6 +20,9 @@ export class RecipeBoxComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit(): void {
     this.api.getRecipesDateOrdered().subscribe({
@@ -32,10 +35,13 @@ export class RecipeBoxComponent implements OnInit {
     });
   }
 
-  like(recipeId: string) {
+  like(recipeId: string, likes: User[]) {
     const user = this.userService.user;
-    this.recipeService.likeRecipe(recipeId, user as User).subscribe({
-      next: () => this.router.navigate(['']),
+    return this.recipeService.likeRecipe(recipeId, user as User).subscribe({
+      next: () => {
+        likes.push(user as User);
+        this.router.navigate(['/']);
+      },
       error: (err) => {
         console.error('Error: ', err);
       },
@@ -51,9 +57,5 @@ export class RecipeBoxComponent implements OnInit {
 
   isAlreadyLikeIt(likes: User[]) {
     return likes.some((element) => element._id === this.userService.user?._id);
-  }
-
-  recipeDetails() {
-    this.router.navigate(['recipe/details'])
   }
 }
