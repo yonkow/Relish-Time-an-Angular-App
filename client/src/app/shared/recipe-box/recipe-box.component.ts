@@ -49,7 +49,7 @@ export class RecipeBoxComponent implements OnInit, OnChanges {
   }
 
   isOwner(recipeOwner: string) {
-    if (recipeOwner === this.userService.user?._id) {
+    if (recipeOwner === this.userService.user?._id || !this.userService.user) {
       return true;
     }
     return false;

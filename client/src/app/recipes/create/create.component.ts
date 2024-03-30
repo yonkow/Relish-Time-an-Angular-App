@@ -4,6 +4,7 @@ import { RecipeService } from '../recipe.service';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/types/user';
+import { Recipe } from 'src/app/types/recipe';
 
 @Component({
   selector: 'app-create',
@@ -11,6 +12,9 @@ import { User } from 'src/app/types/user';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent {
+  showEditMode: boolean = this.recipeService.showEditMode;
+  recipe: Recipe | undefined = this.recipeService.recipe;
+
   form = this.fb.group({
     name: [
       '',
@@ -73,4 +77,41 @@ export class CreateComponent {
         this.router.navigate(['']);
       });
   }
+
+  editHandler() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    const user = this.userService.user;
+
+    const {
+      name,
+      level,
+      mealType,
+      time,
+      ingredients,
+      description,
+      calories,
+      image,
+    } = this.form.value;
+
+    this.recipeService
+    .editRecipe(
+      name!,
+      level!,
+      mealType!,
+      time!,
+      ingredients!,
+      description!,
+      calories!,
+      image!,
+      user as User
+    )
+    .subscribe(() => {
+      this.recipeService.toggleEditMode();
+      this.router.navigate(['']);
+    });
+  }
+  
 }

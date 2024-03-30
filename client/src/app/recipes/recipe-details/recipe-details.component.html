@@ -23,7 +23,7 @@
             <div class="rating">
               <i class="fa fa-heart"> {{ recipe?.likes?.length }} likes</i>
             </div>
-            <div class="reviews">From: {{ recipe!.createdAt | date }} <br /> Since: {{ recipe!.createdAt | elapsedTime }}</div>
+            <div class="reviews">From: {{ recipe!.createdAt | date  }} <br /> Since: {{ recipe!.createdAt | elapsedTime }}</div>
             <div class="recipe-time">
               <ul>
                 <li>
@@ -37,7 +37,7 @@
           </div>
           <div class="ingredient-list">
             <div class="recipe-btn">
-              <a href="#">Edit</a>
+              <a (click)="onEdit()">Edit</a>
               <!-- TODO  -->
               <a href="#" class="black-btn">Delete</a>
               <!-- TODO  -->
@@ -47,7 +47,7 @@
               <div class="salad-list">
                 <h6>For the recipe</h6>
                 <ul>
-                  <li *ngFor="let ingr of recipe?.ingredients">{{ingr}}</li>
+                  <li *ngFor="let ingr of ingredients">{{ingr}}</li>
                 </ul>
               </div>
             </div>

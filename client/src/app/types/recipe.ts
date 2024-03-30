@@ -14,5 +14,5 @@ export interface Recipe {
     likes: User[],
     comments: Comment[],
     createdAt: string;
-    updatedAt: string;
+    updatedAt: Date;
 }

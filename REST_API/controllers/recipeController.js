@@ -37,6 +37,18 @@ router.post('/create', async (req, res) => {
     }
 });
 
+router.put('/:recipeId', async (req, res) => {
+
+    try {
+        const recipeId = req.params['recipeId']
+        const recipe = await recipeService.edit(recipeId, req.body);
+
+        res.status(200).send(recipe);
+    } catch (err) {
+        res.status(409).send({ message: `${err.message}` });
+    }
+})
+
 router.put('/:recipeId/like', async (req, res) => {
 
     try {

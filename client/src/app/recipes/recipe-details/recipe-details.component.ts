@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/types/recipe';
 import { RecipeService } from '../recipe.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -12,11 +12,13 @@ import { UserService } from 'src/app/user/user.service';
 export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined;
   descriptionArr: string[] | undefined;
+  ingredients: string[] | undefined;
 
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -30,15 +32,19 @@ export class RecipeDetailsComponent implements OnInit {
   fetchRecipe(): void {
     const recipeId = this.activatedRoute.snapshot.params['recipeId'];
 
-    this.recipeService.getOneRecipe(recipeId).subscribe((currentRecipe) => {
+    this.recipeService.getRecipe(recipeId).subscribe((currentRecipe) => {
       this.regroup(currentRecipe);
       this.recipe = currentRecipe;
     });
   }
 
   regroup(currentRecipe: Recipe): void {
-    const ingredients = currentRecipe.ingredients.toString();
-    currentRecipe.ingredients = ingredients.split('\n');
+    this.ingredients = currentRecipe.ingredients.toString().split('\n');
     this.descriptionArr = currentRecipe.description.split('\n');
+  }
+
+  onEdit():void {
+    this.recipeService.toggleEditMode()
+    this.router.navigate(['recipes/create'])
   }
 }

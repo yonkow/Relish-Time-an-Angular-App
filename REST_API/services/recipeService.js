@@ -20,6 +20,16 @@ exports.createRecipe = async (recipeData, user) => {
     return recipe
 }
 
+exports.edit = async (recipeId, recipeData) => {
+    const recipe = await Recipe.findById(recipeId);
+
+    if (!recipe) {
+        throw new Error('Recipe not found!')
+    }
+
+    return await Recipe.findByIdAndUpdate(recipeId, { ...recipeData }) 
+}
+
 exports.like = async (recipeId, user) => {
     const recipe = await Recipe.findById(recipeId);
 
