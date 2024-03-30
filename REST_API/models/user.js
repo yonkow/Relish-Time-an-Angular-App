@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Recipe'
     }],
-    comentedRecipes: [{
+    commentedRecipes: [{
         type: mongoose.Types.ObjectId,
         ref: 'Recipe'
     }]

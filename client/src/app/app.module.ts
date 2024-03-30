@@ -12,6 +12,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { appInterceptorProvider } from './app-inteceptor';
+import { CommentsComponent } from './shared/comments/comments.component';
 
 
 @NgModule({

@@ -1,0 +1,349 @@
+/* Template default CSS
+/*----------------------------------------*/
+
+html,
+body {
+  height: 100%;
+  font-family: "PT Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  background: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: #353535;
+  font-weight: 400;
+  font-family: "PT Sans", sans-serif;
+}
+
+h1 {
+  font-size: 70px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 15px;
+  color: #353535;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  line-height: 27px;
+  margin: 0 0 15px 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+  outline: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+  font-family: Flaticon;
+  font-size: 91px;
+  font-style: normal;
+}
+
+.notes h3 {
+  color: #353535;
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+.notes .notes-item {
+  background: #f5f6fa;
+  padding-left: 34px;
+  padding-top: 30px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.notes .notes-item span {
+  color: #fff;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 27px;
+  background: #535c68;
+}
+
+aside p {
+  text-align: end;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.notes .notes-item span h6{
+  display: inline-block;
+  color: #fff;
+  padding-right: 8px;
+}
+
+.notes .notes-item p {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.error {
+  font-size: 14px;
+  margin: 0;
+  padding-left: 6.5vh;
+  color: red;
+}
+
+/*--------------------------
+  Contact
+--------------------------*/
+
+.contact-form {
+	text-align: center;
+}
+
+.contact-form h3 {
+	color: #353535;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.contact-form input {
+	width: 100%;
+	height: 64px;
+	border: 1px solid #F5F6FA;
+	background: #F5F6FA;
+	margin-bottom: 15px;
+	padding-left: 35px;
+	padding-right: 15px;
+	color: #353535;
+	font-size: 16px;
+}
+
+.contact-form input::-webkit-input-placeholder {
+	font-style: italic;
+}
+
+.contact-form input::-moz-placeholder {
+	font-style: italic;
+}
+
+.contact-form input:-ms-input-placeholder {
+	font-style: italic;
+}
+
+.contact-form input::-ms-input-placeholder {
+	font-style: italic;
+}
+
+.contact-form input::placeholder {
+	font-style: italic;
+}
+
+.contact-form textarea {
+	width: 100%;
+	height: 430px;
+	border: 1px solid #F5F6FA;
+	background: #F5F6FA;
+	resize: none;
+	padding-left: 35px;
+	padding-top: 20px;
+	padding-right: 15px;
+	color: #353535;
+	font-size: 16px;
+	margin-bottom: 30px;
+}
+
+.contact-form textarea::-webkit-input-placeholder {
+	font-style: italic;
+}
+
+.contact-form textarea::-moz-placeholder {
+	font-style: italic;
+}
+
+.contact-form textarea:-ms-input-placeholder {
+	font-style: italic;
+}
+
+.contact-form textarea::-ms-input-placeholder {
+	font-style: italic;
+}
+
+.contact-form textarea::placeholder {
+	font-style: italic;
+}
+
+.contact-form button {
+	padding: 18px 85px;
+	display: inline-block;
+	background: #f0932b;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 700;
+  border: none;
+  border-radius: 5px;
+	cursor: pointer;
+}
+
+/*--------------------------
+  Categories Feature Recipe
+--------------------------*/
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col,
+.col-1,
+.col-10,
+.col-11,
+.col-12,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-auto,
+.col-lg,
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-auto,
+.col-md,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-auto,
+.col-sm,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-auto,
+.col-xl,
+.col-xl-1,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-lg-7 {
+  -ms-flex: 0 0 58.333333%;
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+
+.col-lg-5 {
+  -ms-flex: 0 0 41.666667%;
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+.col-lg-12 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}

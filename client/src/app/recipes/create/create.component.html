@@ -263,7 +263,7 @@
         </tr>
       </table>
       <button mat-raised-button color="primary" [disabled]="form.invalid">Edit</button>
-      <button mat-raised-button color="warn" routerLink="recipes/{{recipe?._id}}" >Cancel</button>
+      <button mat-raised-button color="warn" (click)="onCancel" >Cancel</button>
     </div>
   </form>
   </ng-container>

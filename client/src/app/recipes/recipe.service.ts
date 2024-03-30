@@ -4,6 +4,7 @@ import { UserService } from '../user/user.service';
 import { Recipe } from '../types/recipe';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { CommentRecipe } from '../types/comment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,18 +12,19 @@ import { BehaviorSubject, Subscription, tap } from 'rxjs';
 export class RecipeService {
   private recipe$$ = new BehaviorSubject<Recipe | undefined>(undefined);
   private recipe$ = this.recipe$$.asObservable();
-  
+
   recipe: Recipe | undefined;
-  
+
   recipeSubsription: Subscription;
-  
+
   isOwner: boolean = false;
   showEditMode: boolean = false;
 
-  constructor(private http: HttpClient, private userService : UserService) {
+  constructor(private http: HttpClient, private userService: UserService) {
     this.recipeSubsription = this.recipe$.subscribe((recipe) => {
       this.recipe = recipe;
-      this.isOwner = (this.recipe?.owner._id === this.userService.user?._id || false)
+      this.isOwner =
+        this.recipe?.owner._id === this.userService.user?._id || false;
     });
   }
 
@@ -106,5 +108,25 @@ export class RecipeService {
 
   toggleEditMode() {
     this.showEditMode = !this.showEditMode;
+  }
+
+  fetchComments(recipeId: string) {
+    if (!recipeId) {
+      throw new Error('Recipe ID is required.');
+    }
+
+    return this.http.get<CommentRecipe[]>('/comments', {
+      headers: { recipeId },
+    });
+  }
+
+  addComment(content: string) {    
+    const recipe = this.recipe?._id
+    const owner = this.userService.user?._id
+    
+    if(!owner) {
+      throw new Error('User not found!');
+    }
+    return this.http.post<CommentRecipe>('/comments/create', {content, recipe, owner});
   }
 }

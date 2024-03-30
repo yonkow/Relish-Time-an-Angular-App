@@ -1,8 +1,10 @@
+import { Recipe } from "./recipe";
 import { User } from "./user"
 
-export interface Comment {
-    text: string,
-    author: User,
-    likesComment: User[],
-    createdAt: Date;
+export interface CommentRecipe {
+    content: string,
+    owner: User,
+    recipe: Recipe
+    createdAt: string;
+    updatedAt: string;
 }

@@ -48,6 +48,7 @@ exports.like = async (recipeId, user) => {
     return await Recipe.findByIdAndUpdate(recipeId, { likes })
 }
 
-exports.delete = async (recipeId) => {
+exports.delete = async (recipeId, userId) => {
+    await User.findByIdAndUpdate(userId, { $pull: { createdRecipes: (recipeId) }})
     return await Recipe.findByIdAndDelete(recipeId);
 }

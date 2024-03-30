@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { SharedModule } from "../shared/shared.module";
+import { CommentsComponent } from '../shared/comments/comments.component';
 
 
 
@@ -17,6 +18,7 @@ import { SharedModule } from "../shared/shared.module";
     declarations: [
         CreateComponent,
         RecipeDetailsComponent,
+        CommentsComponent,
     ],
     exports: [RecipeRoutingModule],
     imports: [

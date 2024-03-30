@@ -13,7 +13,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined;
   descriptionArr: string[] | undefined;
   ingredients: string[] | undefined;
-
+  showComments: boolean = false;
   
   public get isOwner() : boolean {
     return this.recipeService.isOwner
@@ -39,7 +39,11 @@ export class RecipeDetailsComponent implements OnInit {
     const recipeId = this.activatedRoute.snapshot.params['recipeId'];
 
     this.recipeService.getRecipe(recipeId).subscribe((currentRecipe) => {
+      if(!currentRecipe) {
+        throw new Error('There is no Recipe!');
+      }
       this.regroup(currentRecipe);
+      
       this.recipe = currentRecipe;
     });
   }
@@ -63,5 +67,9 @@ export class RecipeDetailsComponent implements OnInit {
         console.error('Error: ', err);
       },
     });
+  }
+
+  toggleComments() {
+    this.showComments = !this.showComments
   }
 }

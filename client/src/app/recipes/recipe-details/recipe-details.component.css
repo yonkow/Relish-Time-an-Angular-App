@@ -226,152 +226,6 @@ ol {
   flex: 0 0 41.666667%;
   max-width: 41.666667%;
 }
-
-.categories-feature-recipe {
-  position: relative;
-  background: #f8f9fb;
-  padding-bottom: 40px;
-}
-
-.categories-feature-recipe .section-title {
-  width: 430px;
-  text-align: right;
-  background: #fc0254;
-  padding: 18px 0;
-  padding-right: 40px;
-  position: absolute;
-  top: -57px;
-  left: 0;
-}
-
-.categories-feature-recipe .section-title h5 {
-  color: #fff;
-  font-weight: 700;
-}
-
-.categories-feature-recipe .po-relative {
-  position: relative;
-}
-
-.categories-feature-recipe .po-relative .plus-icon {
-  position: absolute;
-  right: 0;
-  top: -157px;
-  width: 80px;
-  background: #fc0254;
-  text-align: center;
-  height: 57px;
-  line-height: 57px;
-  color: #fff;
-}
-
-.cfr-item {
-  overflow: hidden;
-  margin-bottom: 40px;
-}
-
-.cfr-item:hover .cfr-item-img:after {
-  opacity: 0.5;
-}
-
-.cfr-item:hover .cfr-item-img i {
-  opacity: 1;
-}
-
-.cfr-item .cfr-item-img {
-  width: 192px;
-  height: 145px;
-  float: left;
-  margin-right: 25px;
-  position: relative;
-  z-index: 1;
-}
-
-.cfr-item .cfr-item-img:after {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  background: #f0932b;
-  content: "";
-  opacity: 0;
-  z-index: -1;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-}
-
-.cfr-item .cfr-item-img i {
-  position: absolute;
-  left: 0;
-  right: 0;
-  text-align: center;
-  top: 50%;
-  -webkit-transform: translateY(-46px);
-  transform: translateY(-46px);
-  color: #fff;
-  opacity: 0;
-  -webkit-transform: translateY(-8px);
-  transform: translateY(-8px);
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-}
-
-.cfr-item .cfr-item-text {
-  overflow: hidden;
-}
-
-.cfr-item .cfr-item-text .cat-name {
-  color: #fff;
-  background: #f0932b;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 4px 25px 4px 25px;
-}
-
-.cfr-item .cfr-item-text a {
-  display: block;
-}
-
-.cfr-item .cfr-item-text a h4 {
-  font-weight: 700;
-  margin-top: 9px;
-  margin-bottom: 20px;
-}
-
-.cfr-item .cfr-item-text p {
-  margin-bottom: 0;
-}
-
-.cfr-small-item {
-  overflow: hidden;
-  margin-bottom: 35px;
-}
-
-.cfr-small-item a {
-  float: left;
-  margin-right: 22px;
-}
-
-.cfr-small-item .cfr-small-text .cat-name {
-  color: #fff;
-  background: #f0932b;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 4px 25px 4px 25px;
-}
-
-.cfr-small-item .cfr-small-text h6 {
-  font-weight: 700;
-  margin-top: 9px;
-  line-height: 22px;
-  color: #353535;
-}
-
 /*--------------------------
   Single Page Recipe
 --------------------------*/
@@ -687,36 +541,16 @@ ol {
   font-weight: 700;
 }
 
-.recipe-right .notes h3 {
-  color: #353535;
-  font-weight: 700;
-  margin-bottom: 35px;
-}
-
-.recipe-right .notes .notes-item {
-  background: #f5f6fa;
-  padding-left: 34px;
-  padding-top: 30px;
-  padding-right: 25px;
-  padding-bottom: 15px;
-  margin-bottom: 30px;
-}
-
-.recipe-right .notes .notes-item span {
-  color: #fff;
-  display: inline-block;
-  border-radius: 50%;
-  font-size: 15px;
-  font-weight: 700;
-  height: 27px;
-  width: 27px;
-  text-align: center;
-  line-height: 27px;
-  background: #fc0254;
-}
-
-.recipe-right .notes .notes-item p {
-  margin-top: 10px;
+.recipe-right button {
+	padding: 18px 20px;
+	display: inline-block;
+	background: #f0932b;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 700;
+  border: none;
+  border-radius: 5px;
+	cursor: pointer;
 }
 
 /* ----------------------- Responsive Media Styles ------------------------*/

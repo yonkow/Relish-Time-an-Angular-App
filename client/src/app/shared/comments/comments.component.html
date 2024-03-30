@@ -1,0 +1,47 @@
+<div class="notes">
+  <h3>Comments</h3>
+  <div class="notes-item" *ngFor="let comment of comments">
+    <span
+      ><h6>From:</h6>
+      {{ comment.owner.email }}</span
+    >
+    <p>
+      {{ comment.content }}
+    </p>
+    <aside>
+      <p>{{ comment.createdAt | elapsedTime }}</p>
+    </aside>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <form #form="ngForm" (ngSubmit)="comment(form)" class="contact-form">
+          <h3>Leave a Comment</h3>
+          <div class="row">
+            <div class="col-lg-12">
+              <ng-container *ngIf="inputText.touched">
+                <p *ngIf="inputText.errors?.['required']" class="error">
+                  This field is required.
+                </p>
+                <p *ngIf="inputText.errors?.['maxlength'] || inputText.errors?.['minlength']" class="error">
+                  The field should be between 3 and 300 charecters.
+                </p>
+              </ng-container>
+              <textarea
+                type="text"
+                required
+                ngModel
+                name="text"
+                #inputText="ngModel"
+                placeholder="Comment"
+                minlength="3"
+                maxlength="300"
+              ></textarea>
+            </div>
+          </div>
+          <button [disabled]="form.invalid">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

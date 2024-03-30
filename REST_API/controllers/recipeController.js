@@ -6,6 +6,7 @@ router.get('/', async (req, res) => {
         const recipes = await recipeService.getAll()
             .populate('owner')
             .populate('likes')
+            .populate('comments')
         res.status(200).send(recipes)
     } catch (err) {
         res.status(409).send({ message: `${err}` });
@@ -65,7 +66,7 @@ router.delete('/:recipeId', async (req, res) => {
 
     try {
         const recipeId = req.params['recipeId']
-        await recipeService.delete(recipeId)
+        await recipeService.delete(recipeId, req.user._id)
         res.status(200).json('Delete succesfully!');
     } catch (err) {
         res.status(409).send({ message: `${err.message}` });

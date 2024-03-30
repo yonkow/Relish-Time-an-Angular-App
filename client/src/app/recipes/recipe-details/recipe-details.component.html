@@ -23,7 +23,7 @@
             <div class="rating">
               <i class="fa fa-heart"> {{ recipe?.likes?.length }} likes</i>
             </div>
-            <div class="reviews">From: {{ recipe!.createdAt | date  }} <br /> Since: {{ recipe!.createdAt | elapsedTime }}</div>
+            <div class="reviews">From:  {{ recipe?.createdAt | date  }} <br /> Since: {{ recipe?.createdAt || '' | elapsedTime }}</div>
             <div class="recipe-time">
               <ul>
                 <li>
@@ -75,31 +75,10 @@
               </li>
             </ul>
           </div>
-          <div class="notes">
-            <h3>Comments</h3>
-            <div class="notes-item">
-              <span>i</span>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet. Donec in sodales dui, a blandit
-                nunc. Pellentesque id eros venenatis, sollicitudin neque
-                sodales, vehicula nibh. Nam massa odio, porttitor vitae
-                efficitur non, ultricies volutpat tellus. Cras egestas in lacus
-                a finibus. Suspendisse sed urna at elit condimentum viverra.
-              </p>
-            </div>
-            <div class="notes-item">
-              <span>i</span>
-              <p>
-                Donec in sodales dui, a blandit nunc. Pellentesque id eros
-                venenatis, sollicitudin neque sodales, vehicula nibh. Nam massa
-                odio, porttitor vitae efficitur non, ultricies volutpat tellus.
-                Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                condimentum viverra.
-              </p>
-            </div>
-          </div>
+          <button (click)="toggleComments()">Show Comments</button>
+          <ng-container *ngIf="showComments">
+            <app-comments></app-comments>
+          </ng-container>
         </div>
       </div>
     </div>

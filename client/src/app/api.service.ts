@@ -6,9 +6,8 @@ import { Recipe } from './types/recipe';
   providedIn: 'root',
 })
 export class ApiService {
-  recipes: Recipe[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, ) {}
 
   getRecipesDateOrdered() {
     return this.http.get<Recipe[]>('/recipes');

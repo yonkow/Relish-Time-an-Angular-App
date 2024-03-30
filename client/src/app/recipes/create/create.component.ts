@@ -114,4 +114,9 @@ export class CreateComponent {
     });
   }
   
+  onCancel() {
+    console.log(this.recipe!._id);
+    
+    this.router.navigate(['']);
+  }
 }

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const reviewSchema = new mongoose.Schema({
-    text: String,
+const commentSchema = new mongoose.Schema({
+    content: String,
     recipe: {
         type: mongoose.Types.ObjectId,
         ref: 'Recipe',
@@ -10,8 +10,8 @@ const reviewSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User',
     },
-});
+}, {timestamps:true});
 
-const Review = mongoose.model('Review', reviewSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 
-module.exports = Review;
+module.exports = {Comment:Comment};
