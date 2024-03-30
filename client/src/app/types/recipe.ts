@@ -13,6 +13,6 @@ export interface Recipe {
     owner: User,
     likes: User[],
     comments: Comment[],
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 }
