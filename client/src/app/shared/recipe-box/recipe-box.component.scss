@@ -12,8 +12,7 @@ a {
 }
 
 .container {
-  border: 1px solid red;
-  width: 900px;
+  max-width: 1300px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +22,7 @@ a {
 .recipe-card {
   background: #fff;
   margin: 1em auto;
-  min-width: 280px;
+  width: 310px;
   border-radius: 10px;
   overflow: hidden;
 
@@ -88,6 +87,8 @@ a {
     padding: 1.25em 1.5em;
 
     ul {
+      position: relative;
+      bottom: 0;
       //   list-style: none;
       margin: 0.5em 0 0;
       padding: 0;

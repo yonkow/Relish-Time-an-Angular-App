@@ -6,27 +6,41 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { NotificationService } from './core/notification/notification.service';
+import { Router } from '@angular/router';
 
 const { apiUrl } = environment;
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
   API = '/';
+
+  constructor(private notificationService: NotificationService, private router: Router) {}
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.url.startsWith('/')) {
+    if (req.url.startsWith(this.API)) {
       req = req.clone({
         url: req.url.replace(this.API, apiUrl),
         withCredentials: true,
       });
     }
-    // console.log(req);
 
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError((err) => {
+        if (err.status === 401) {
+          this.router.navigate(['/auth/login'])
+        } else {
+          this.notificationService.setError(err);
+          this.router.navigate(['/error'])
+        }
+        return [err];
+      })
+    );
   }
 }
 

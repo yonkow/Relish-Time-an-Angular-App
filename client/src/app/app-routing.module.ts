@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { NotificationComponent } from './core/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     path: 'recipes',
     loadChildren: () => import('./recipes/recipe.module').then((m) => m.RecipesModule),
   },
+  { path: 'error', component: NotificationComponent},
   {
     path: '**',
     redirectTo: '/404',

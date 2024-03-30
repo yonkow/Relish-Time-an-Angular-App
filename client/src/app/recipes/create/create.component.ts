@@ -14,7 +14,7 @@ export class CreateComponent {
   form = this.fb.group({
     name: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(30)],
+      [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
     ],
     level: ['', [Validators.required]],
     mealType: ['', [Validators.required]],

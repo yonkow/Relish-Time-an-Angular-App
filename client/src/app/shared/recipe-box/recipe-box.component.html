@@ -1,37 +1,56 @@
 <div class="box-container">
-    <div class="container">
-        <div class="recipe-card" *ngFor="let recipe of recipes">
-          
-            <aside>
-                <div class="image">
-                    <img src="{{recipe.image}}" alt="{{recipe.name}}" />
-                </div>
-                <button [disabled]="isOwner(recipe.owner._id) || isAlreadyLikeIt(recipe.likes)" (click)="like(recipe._id, recipe.likes)" class="button"><i class="fa-regular fa-heart"></i></button>
-            </aside>
-        
-        <a [routerLink]="'recipes/' + recipe._id">
-            <article>
-                <h2>{{recipe.name}}</h2>
-                <h3 class="uppercase">{{recipe.mealType}}</h3>
-    
-                <ul>
-                    <li><i class="fa-solid fa-heart"></i><span>{{recipe.likes.length}}</span></li>
-                    <li><i class="fa-regular fa-clock"></i><span>{{recipe.time}}min</span></li>
-                    <li><i class="fa-regular fa-circle-dot"></i><i class="fa-regular fa-circle"></i><i
-                            class="fa-regular fa-circle"></i><span>{{recipe.level}}</span></li>
-                    <li><i class="fa-solid fa-fire icon-users"></i><span>{{recipe.calories}}</span></li>
-                </ul>
-    
-                <!-- <p class="text">For an extra thick and creamy bowl, add oat bran. It'll make for a hearty helping and also add
+  <div class="container">
+    <div class="recipe-card" *ngFor="let recipe of recipes">
+      <aside>
+        <div class="image">
+          <img src="{{ recipe.image }}" alt="{{ recipe.name }}" />
+        </div>
+        <button
+          [disabled]="
+            isOwner(recipe.owner._id) || isAlreadyLikeIt(recipe.likes)
+          "
+          (click)="like(recipe._id, recipe.likes)"
+          class="button"
+        >
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </aside>
+
+      <a [routerLink]="'recipes/' + recipe._id">
+        <article>
+          <h2>{{ recipe.name }}</h2>
+          <h3 class="uppercase">{{ recipe.mealType }}</h3>
+
+          <ul>
+            <li>
+              <i class="fa-solid fa-heart"></i
+              ><span>{{ recipe.likes.length }}</span>
+            </li>
+            <li>
+              <i class="fa-regular fa-clock"></i
+              ><span>{{ recipe.time }}min</span>
+            </li>
+            <li>
+              <i class="fa-regular fa-circle-dot"></i
+              ><i class="fa-regular fa-circle"></i
+              ><i class="fa-regular fa-circle"></i
+              ><span>{{ recipe.level }}</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-fire icon-users"></i
+              ><span>{{ recipe.calories }}</span>
+            </li>
+          </ul>
+
+          <!-- <p class="text">For an extra thick and creamy bowl, add oat bran. It'll make for a hearty helping and also add
                 more fiber to
                 your meal. If you love the taste of chai, you'll enjoy this spiced version with coriander, cinnamon, and
                 turmeric.</p> -->
-    
-                <!-- <p class="ingredients"><span>Ingredients:&nbsp;</span>Milk, salt, coriander, cardamom, cinnamon, turmeric,
-                    honey, vanilla extract, regular oats, oat bran.</p> -->
-            </article>
-        </a>
-        </div>
 
+          <!-- <p class="ingredients"><span>Ingredients:&nbsp;</span>Milk, salt, coriander, cardamom, cinnamon, turmeric,
+                    honey, vanilla extract, regular oats, oat bran.</p> -->
+        </article>
+      </a>
     </div>
+  </div>
 </div>

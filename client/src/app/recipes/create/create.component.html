@@ -8,7 +8,7 @@
         Recipe name should be at least 3 charactes!
       </p>
       <p *ngIf="form.get('name')?.errors?.['maxlength']" class="error">
-        Recipe name should be with maximum length 30 charactes!
+        Recipe name should be with maximum length 50 charactes!
       </p>
     </ng-container>
     <mat-form-field class="example-full-width">
@@ -18,7 +18,7 @@
         formControlName="name"
         required
         minlength="3"
-        maxlength="30"
+        maxlength="50"
       />
       <mat-icon matSuffix color="primary">menu_book</mat-icon>
     </mat-form-field>

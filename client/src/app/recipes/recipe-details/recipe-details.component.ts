@@ -33,7 +33,6 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipeService.getOneRecipe(recipeId).subscribe((currentRecipe) => {
       this.regroup(currentRecipe);
       this.recipe = currentRecipe;
-      console.log(this.recipe);
     });
   }
 

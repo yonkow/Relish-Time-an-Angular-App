@@ -9,10 +9,9 @@ import { HeaderComponent } from './core/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RecipeBoxComponent } from './shared/recipe-box/recipe-box.component';
 import { FooterComponent } from './core/footer/footer.component';
-import { appInterceptorProvider } from './app-inteceptor';
 import { AuthComponent } from './auth/auth.component';
-import { NotFoundComponent } from './core/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { appInterceptorProvider } from './app-inteceptor';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RecipeBoxComponent,
     FooterComponent,
     AuthComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

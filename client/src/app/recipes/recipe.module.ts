@@ -9,25 +9,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { SharedModule } from "../shared/shared.module";
 
 
 
 @NgModule({
-  declarations: [
-    CreateComponent,
-    RecipeDetailsComponent,
-  ],
-  imports: [
-    CommonModule,
-    RecipeRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
-  exports: [RecipeRoutingModule]
+    declarations: [
+        CreateComponent,
+        RecipeDetailsComponent,
+    ],
+    exports: [RecipeRoutingModule],
+    imports: [
+        CommonModule,
+        RecipeRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatIconModule,
+        MatButtonModule,
+        SharedModule
+    ]
 })
 export class RecipesModule { }

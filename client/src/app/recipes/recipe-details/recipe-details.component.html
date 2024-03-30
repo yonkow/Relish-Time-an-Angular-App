@@ -23,7 +23,7 @@
             <div class="rating">
               <i class="fa fa-heart"> {{ recipe?.likes?.length }} likes</i>
             </div>
-            <div class="reviews">Since: {{ recipe?.createdAt | date }}</div>
+            <div class="reviews">From: {{ recipe!.createdAt | date }} <br /> Since: {{ recipe!.createdAt | elapsedTime }}</div>
             <div class="recipe-time">
               <ul>
                 <li>
