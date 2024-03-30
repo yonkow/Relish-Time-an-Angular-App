@@ -14,6 +14,12 @@ export class RecipeDetailsComponent implements OnInit {
   descriptionArr: string[] | undefined;
   ingredients: string[] | undefined;
 
+  
+  public get isOwner() : boolean {
+    return this.recipeService.isOwner
+  }
+  
+
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
@@ -24,7 +30,7 @@ export class RecipeDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchRecipe();
   }
-
+  
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
@@ -46,5 +52,16 @@ export class RecipeDetailsComponent implements OnInit {
   onEdit():void {
     this.recipeService.toggleEditMode()
     this.router.navigate(['recipes/create'])
+  }
+
+  onDelete():void {
+    this.recipeService.deleteRecipe().subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error('Error: ', err);
+      },
+    });
   }
 }

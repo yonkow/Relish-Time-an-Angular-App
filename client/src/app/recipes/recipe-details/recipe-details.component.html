@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="recipe-title">
         <span
-          >~ {{ recipe?.ingredients?.length }} ingredients /
+          >~ {{ ingredients?.length }} ingredients /
           {{ recipe?.time }} minutes / {{ recipe?.level }} / recipe</span
         >
         <h2>{{ recipe?.name }}</h2>
@@ -36,11 +36,9 @@
             </div>
           </div>
           <div class="ingredient-list">
-            <div class="recipe-btn">
+            <div class="recipe-btn" *ngIf="isOwner">
               <a (click)="onEdit()">Edit</a>
-              <!-- TODO  -->
-              <a href="#" class="black-btn">Delete</a>
-              <!-- TODO  -->
+              <a (click)="onDelete()" class="black-btn">Delete</a>
             </div>
             <div class="list-item">
               <h5>Ingredients</h5>

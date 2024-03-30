@@ -61,4 +61,15 @@ router.put('/:recipeId/like', async (req, res) => {
     }
 })
 
+router.delete('/:recipeId', async (req, res) => {
+
+    try {
+        const recipeId = req.params['recipeId']
+        await recipeService.delete(recipeId)
+        res.status(200).json('Delete succesfully!');
+    } catch (err) {
+        res.status(409).send({ message: `${err.message}` });
+    }
+})
+
 module.exports = router;

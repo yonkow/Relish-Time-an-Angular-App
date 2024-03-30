@@ -1,12 +1,13 @@
 nav {
-  position: sticky;
+  position: fixed;
   top: 0;
-  max-width: 100svw;
+  width: 100svw;
   background-color: var(--nav-bg);
   display: flex;
   text-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 }
 
 .nav-title {

@@ -47,3 +47,7 @@ exports.like = async (recipeId, user) => {
     await User.findByIdAndUpdate(user._id, { likedRecipes })
     return await Recipe.findByIdAndUpdate(recipeId, { likes })
 }
+
+exports.delete = async (recipeId) => {
+    return await Recipe.findByIdAndDelete(recipeId);
+}

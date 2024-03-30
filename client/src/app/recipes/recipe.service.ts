@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserService } from '../user/user.service';
 import { Recipe } from '../types/recipe';
-import { Router } from '@angular/router';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
@@ -12,16 +11,18 @@ import { BehaviorSubject, Subscription, tap } from 'rxjs';
 export class RecipeService {
   private recipe$$ = new BehaviorSubject<Recipe | undefined>(undefined);
   private recipe$ = this.recipe$$.asObservable();
-
+  
   recipe: Recipe | undefined;
-
+  
   recipeSubsription: Subscription;
-
+  
+  isOwner: boolean = false;
   showEditMode: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService : UserService) {
     this.recipeSubsription = this.recipe$.subscribe((recipe) => {
       this.recipe = recipe;
+      this.isOwner = (this.recipe?.owner._id === this.userService.user?._id || false)
     });
   }
 
@@ -93,6 +94,14 @@ export class RecipeService {
           this.recipe$$.next(recipe);
         })
       );
+  }
+
+  deleteRecipe() {
+    return this.http.delete<Recipe>(`/recipes/${this.recipe?._id}`).pipe(
+      tap(() => {
+        this.recipe$$.next(undefined);
+      })
+    );
   }
 
   toggleEditMode() {
