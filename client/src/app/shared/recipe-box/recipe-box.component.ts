@@ -24,6 +24,8 @@ export class RecipeBoxComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.activatedRoute);
+    
     if (this.activatedRoute.component!.name === 'ProfileComponent'){
       this.userService.getUserCreatedRecipes().subscribe({
         next: (recipes) => {

@@ -14,7 +14,7 @@ exports.register = async (regData) => {
     }
 
     const createdUser = await User.create(regData);
-    return {token: await generateAccessToken(createdUser), user: createdUser};
+    return { token: await generateAccessToken(createdUser), user: createdUser };
 };
 
 exports.login = async (userData) => {
@@ -28,10 +28,12 @@ exports.login = async (userData) => {
         throw new Error('No such user or password');
     }
 
-    return {token: await generateAccessToken(user), user: user};
+    return { token: await generateAccessToken(user), user: user };
 };
 
 exports.findOne = async (userId) => await User.findById(userId, { password: 0, __v: 0 })
+
+exports.updateOne = async (userId, userData) => await User.findByIdAndUpdate(userId, { ...userData })
 
 function generateAccessToken(user) {
     const payload = {
