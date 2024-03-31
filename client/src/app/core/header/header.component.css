@@ -91,5 +91,5 @@ padding-right: 1em;
   display: block;
   text-decoration: none;
   position: relative;
-  /* z-index: 10; */
+  z-index: 10;
 }
