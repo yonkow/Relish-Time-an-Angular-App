@@ -139,6 +139,25 @@ aside p {
   color: red;
 }
 
+.no-comments h4 {
+  text-align: center;
+  font-style: italic;
+  margin: 1em auto;
+  color: gray;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left p{
+  color: gray;
+}
+
+.right p{
+  color: gray;
+}
 /*--------------------------
   Contact
 --------------------------*/
