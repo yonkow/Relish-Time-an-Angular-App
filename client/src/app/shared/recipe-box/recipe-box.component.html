@@ -5,20 +5,22 @@
         <div class="image">
           <img src="{{ recipe.image }}" alt="{{ recipe.name }}" />
         </div>
-        <button
+        <ng-container *ngIf="!isProfile">
+          <button
           [disabled]="
             isOwner(recipe.owner._id) || isAlreadyLikeIt(recipe.likes)
-          "
+            "
           (click)="like(recipe._id, recipe.likes)"
           class="button"
-        >
+          >
           <i class="fa-regular fa-heart"></i>
         </button>
+      </ng-container>
       </aside>
 
-      <a [routerLink]="'recipes/' + recipe._id">
+      <a routerLink="/recipes/{{recipe._id}}">
         <article>
-          <h2>{{ recipe.name }}</h2>
+          <h2>{{ recipe.name | slice : 15 }}</h2>
           <h3 class="uppercase">{{ recipe.mealType }}</h3>
 
           <ul>

@@ -18,7 +18,6 @@ import { CommentsComponent } from '../shared/comments/comments.component';
     declarations: [
         CreateComponent,
         RecipeDetailsComponent,
-        CommentsComponent,
     ],
     exports: [RecipeRoutingModule],
     imports: [

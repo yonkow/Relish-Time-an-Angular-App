@@ -1,5 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { RecipeService } from 'src/app/recipes/recipe.service';
 import { Recipe } from 'src/app/types/recipe';
@@ -11,28 +11,39 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './recipe-box.component.html',
   styleUrls: ['./recipe-box.component.scss'],
 })
-export class RecipeBoxComponent implements OnInit, OnChanges {
+export class RecipeBoxComponent implements OnInit {
   recipes: Recipe[] = [];
+  isProfile: Boolean = false;
 
   constructor(
     private api: ApiService,
     private recipeService: RecipeService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
-  }
 
   ngOnInit(): void {
-    this.api.getRecipesDateOrdered().subscribe({
-      next: (recipes) => {
-        this.recipes = recipes;
-      },
-      error: (err) => {
-        console.error('Error: ', err);
-      },
-    });
+    if (this.activatedRoute.component!.name === 'ProfileComponent'){
+      this.userService.getUserCreatedRecipes().subscribe({
+        next: (recipes) => {
+          this.isProfile = true
+          this.recipes = recipes;
+        },
+        error: (err) => {
+          console.error('Error: ', err);
+        },
+      });
+    } else if (this.activatedRoute.component!.name === 'HomeComponent') {
+      this.api.getRecipesDateOrdered().subscribe({
+        next: (recipes) => {
+          this.recipes = recipes;
+        },
+        error: (err) => {
+          console.error('Error: ', err);
+        },
+      });
+    }
   }
 
   like(recipeId: string, likes: User[]) {

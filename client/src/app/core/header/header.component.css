@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap");
+
+h1 {
+  font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -28,7 +43,7 @@ nav {
 }
 
 .nav-list ul:last-child {
-padding-right: 1em;
+  padding-right: 1em;
 }
 
 .nav-list li {

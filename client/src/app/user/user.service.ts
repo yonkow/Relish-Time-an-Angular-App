@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { Recipe } from '../types/recipe';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
+  public user$ = this.user$$.asObservable();
 
   user: User | undefined;
   USER_KEY = '[user]';
@@ -19,7 +21,7 @@ export class UserService implements OnDestroy {
     return !!this.user;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.userSubscription = this.user$
     .subscribe((user) => {      
       this.user = user;
@@ -34,7 +36,7 @@ export class UserService implements OnDestroy {
     rePassword: string
   ) {
     const data = this.http
-      .post<User>('/auth/register', { username, email, password, rePassword, })
+      .post<User>('/auth/register', { username, email, password, rePassword})
       .pipe(tap((user) => {this.user$$.next(user)}));
 
     return data;
@@ -57,6 +59,15 @@ export class UserService implements OnDestroy {
     return this.http
       .get<User>('/auth/profile')
       .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  getUserCreatedRecipes() {
+    const userId = this.user?._id
+    if(!userId) {
+      throw new Error('There is not User!')
+    }
+    
+    return this.http.get<Recipe[]>(`/recipes/profile/${userId}`);
   }
 
   ngOnDestroy(): void {

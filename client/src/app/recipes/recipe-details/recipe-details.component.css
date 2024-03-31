@@ -4,7 +4,6 @@
 html,
 body {
   height: 100%;
-  font-family: "PT Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   background: none;
@@ -18,8 +17,6 @@ h5,
 h6 {
   margin: 0;
   color: #353535;
-  font-weight: 400;
-  font-family: "PT Sans", sans-serif;
 }
 
 h1 {
@@ -49,7 +46,6 @@ h6 {
 p {
   font-size: 15px;
   color: #353535;
-  font-family: "PT Sans", sans-serif;
   font-weight: 400;
   line-height: 27px;
   margin: 0 0 15px 0;

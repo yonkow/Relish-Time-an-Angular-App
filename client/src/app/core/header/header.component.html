@@ -1,6 +1,6 @@
 <div class="header">
   <nav>
-    <h1 class="nav-title">RELISH TIME</h1>
+    <h1 class="nav-title"><a routerLink="/">RELISH TIME</a></h1>
 
     <div class="nav-list">
       <ul>
@@ -10,9 +10,6 @@
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <a routerLink="/">Home</a>
-        </li>
-        <li (click)="activeToggle($event)" routerLinkActive="active">
-            <a routerLink="recipe/search">Search</a>
         </li>
       </ul>
       <ul *ngIf="!isLoggedIn">
@@ -27,6 +24,9 @@
         <li (click)="activeToggle($event)" routerLinkActive="active">
           <a routerLink="/recipes/create">Create</a>
         </li>
+        <li (click)="activeToggle($event)" routerLinkActive="active">
+          <a routerLink="auth/profile">{{username}}'s profile</a>
+      </li>
         <li
           (click)="logout()"
           (click)="activeToggle($event)"

@@ -120,13 +120,17 @@ export class RecipeService {
     });
   }
 
-  addComment(content: string) {    
-    const recipe = this.recipe?._id
-    const owner = this.userService.user?._id
-    
-    if(!owner) {
+  addComment(content: string) {
+    const recipe = this.recipe?._id;
+    const owner = this.userService.user?._id;
+
+    if (!owner) {
       throw new Error('User not found!');
     }
-    return this.http.post<CommentRecipe>('/comments/create', {content, recipe, owner});
+    return this.http.post<CommentRecipe>('/comments/create', {
+      content,
+      recipe,
+      owner,
+    });
   }
 }

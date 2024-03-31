@@ -15,7 +15,7 @@ export class NotificationComponent implements OnInit {
   
   ngOnInit(): void {
     this.notificationService.apiErr$.subscribe((err: HttpErrorResponse | null ) => {
-      this.errorMsg = err?.error || ''  
+      this.errorMsg = err?.message || ''  
     })
   }
 }

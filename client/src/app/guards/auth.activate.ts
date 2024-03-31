@@ -6,12 +6,20 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { UserService } from '../user/user.service';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../types/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthActivate implements CanActivate {
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private http: HttpClient,
+    private cookieService: CookieService
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -25,7 +33,7 @@ export class AuthActivate implements CanActivate {
       alert(
         'You are not allowed to view this page. You are redirected to login Page'
       );
-
+      this.cookieService.delete('auth-cookie')
       this.router.navigate(['auth/login'], {
         queryParams: { retUrl: route.url },
       });

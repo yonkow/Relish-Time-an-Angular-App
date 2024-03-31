@@ -12,7 +12,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { appInterceptorProvider } from './app-inteceptor';
-import { CommentsComponent } from './shared/comments/comments.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -20,7 +20,6 @@ import { CommentsComponent } from './shared/comments/comments.component';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    RecipeBoxComponent,
     FooterComponent,
     AuthComponent,
   ],
@@ -29,6 +28,7 @@ import { CommentsComponent } from './shared/comments/comments.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
