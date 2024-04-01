@@ -31,7 +31,7 @@ exports.login = async (userData) => {
     return { token: await generateAccessToken(user), user: user };
 };
 
-exports.findOne = async (userId) => await User.findById(userId, { password: 0, __v: 0 })
+exports.findOne = async (userId) => await User.findById(userId, { password: 0, __v: 0 }).populate('likedRecipes')
 
 exports.updateOne = async (userId, userData) => await User.findByIdAndUpdate(userId, { ...userData })
 

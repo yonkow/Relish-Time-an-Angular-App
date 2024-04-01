@@ -5,8 +5,6 @@ exports.getAll = () => Recipe.find().sort({ 'createdAt': -1 });
 
 exports.getAllForProfile = (userId) => Recipe.find({owner: userId})
 
-exports.getLikedRecipes = (userId) => Recipe.find({owner: userId})
-
 exports.getOne = (recipeId) => Recipe.findById(recipeId);
 
 exports.createRecipe = async (recipeData, user) => {

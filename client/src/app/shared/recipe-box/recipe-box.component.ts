@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { RecipeService } from 'src/app/recipes/recipe.service';
 import { Recipe } from 'src/app/types/recipe';
@@ -14,6 +15,9 @@ import { UserService } from 'src/app/user/user.service';
 export class RecipeBoxComponent implements OnInit {
   recipes: Recipe[] = [];
   isProfile: Boolean = false;
+  routeSubscription: Subscription = new Subscription();
+  fetchLikedRecipesSubscription: Subscription = new Subscription;
+  isHomePage: Boolean = false;
 
   constructor(
     private api: ApiService,
@@ -24,28 +28,23 @@ export class RecipeBoxComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.activatedRoute);
-    
-    if (this.activatedRoute.component!.name === 'ProfileComponent'){
-      this.userService.getUserCreatedRecipes().subscribe({
-        next: (recipes) => {
-          this.isProfile = true
-          this.recipes = recipes;
-        },
-        error: (err) => {
-          console.error('Error: ', err);
-        },
-      });
-    } else if (this.activatedRoute.component!.name === 'HomeComponent') {
-      this.api.getRecipesDateOrdered().subscribe({
-        next: (recipes) => {
-          this.recipes = recipes;
-        },
-        error: (err) => {
-          console.error('Error: ', err);
-        },
-      });
-    }
+    this.fetchLikedRecipesSubscription =
+      this.api.fetchLikedRecipes$.subscribe(
+        (fetchLikedRecipes) => {
+          if (fetchLikedRecipes) {
+            this.fetchLikedRecipes();
+          }
+        }
+      );
+
+    this.routeSubscription = this.activatedRoute.url.subscribe((urlSegment) => {
+      const currentPath = urlSegment.map((segment) => segment.path).join('/');
+      if (currentPath === 'profile') {
+        this.loadProfileRecipes();
+      } else if (currentPath === '') {
+        this.loadHomeRecipes();
+      }
+    });
   }
 
   like(recipeId: string, likes: User[]) {
@@ -57,6 +56,47 @@ export class RecipeBoxComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error: ', err);
+      },
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
+  }
+
+  private loadProfileRecipes(): void {
+    this.userService.getCreatedRecipesByUser().subscribe({
+      next: (recipes) => {
+        this.isProfile = true;
+        this.recipes = recipes;
+      },
+      error: (err) => {
+        console.error('Error fetching profile recipes: ', err);
+      },
+    });
+  }
+
+  private loadHomeRecipes(): void {
+    this.isHomePage = !this.isHomePage
+    this.api.getRecipesDateOrdered().subscribe({
+      next: (recipes) => {
+        this.recipes = recipes;
+      },
+      error: (err) => {
+        console.error('Error fetching home recipes: ', err);
+      },
+    });
+  }
+
+  fetchLikedRecipes() {
+    this.userService.getLikedRecipes().subscribe({
+      next: (recipes) => {
+        this.recipes = recipes;
+      },
+      error: (err) => {
+        console.error('Error fetching liked recipes: ', err);
       },
     });
   }

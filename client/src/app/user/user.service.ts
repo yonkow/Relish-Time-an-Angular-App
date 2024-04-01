@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, catchError, tap, throwError } from 'rxjs';
 import { Recipe } from '../types/recipe';
 import { Router } from '@angular/router';
+import { NotificationService } from '../core/notification/notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,10 @@ export class UserService implements OnDestroy {
     return !!this.user;
   }
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private notificationService: NotificationService
+  ) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
       // console.log(this.user)
@@ -46,11 +50,25 @@ export class UserService implements OnDestroy {
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('/auth/login', { email, password }).pipe(
-      tap((user) => {
-        this.user$$.next(user);
-      })
-    );
+    return this.http
+      .post<User>('/auth/login', { email, password })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error:', error);
+          let errorMessage = 'An error occurred';
+        if (error.error && error.error.message) {
+          errorMessage = error.error.message;
+        }
+        this.notificationService.setError(errorMessage);
+        return throwError(error);
+        })
+      )
+      .pipe(
+        tap((user) => {
+          this.user$$.next(user);
+        })
+      )
+      
   }
 
   logout() {
@@ -67,13 +85,22 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  getUserCreatedRecipes() {
+  getCreatedRecipesByUser() {
     const userId = this.user?._id;
     if (!userId) {
       throw new Error('There is not User!');
     }
 
-    return this.http.get<Recipe[]>(`/recipes/profile/${userId}`);
+    return this.http.get<Recipe[]>(`/auth/${userId}/recipes/created`);
+  }
+
+  getLikedRecipes() {
+    const userId = this.user?._id;
+    if (!userId) {
+      throw new Error('There is not User!');
+    }
+
+    return this.http.get<Recipe[]>(`/auth/${userId}/recipes/liked`);
   }
 
   ngOnDestroy(): void {

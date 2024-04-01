@@ -1,4 +1,8 @@
 <div class="box-container">
+  <ng-container *ngIf="isHomePage">
+    <h1 class="center">---  Last Added Recipes  ---</h1>
+    <hr>
+  </ng-container>
   <div class="container">
     <div class="recipe-card" *ngFor="let recipe of recipes">
       <aside>
@@ -43,14 +47,6 @@
               ><span>{{ recipe.calories }}</span>
             </li>
           </ul>
-
-          <!-- <p class="text">For an extra thick and creamy bowl, add oat bran. It'll make for a hearty helping and also add
-                more fiber to
-                your meal. If you love the taste of chai, you'll enjoy this spiced version with coriander, cinnamon, and
-                turmeric.</p> -->
-
-          <!-- <p class="ingredients"><span>Ingredients:&nbsp;</span>Milk, salt, coriander, cardamom, cinnamon, turmeric,
-                    honey, vanilla extract, regular oats, oat bran.</p> -->
         </article>
       </a>
     </div>

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -5,12 +6,13 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class NotificationService {
-  private apiErr$$ = new BehaviorSubject(null);
+
+  private apiErr$$ = new BehaviorSubject< string | null>(null);
   public apiErr$ = this.apiErr$$.asObservable();
 
   constructor() {}
 
-  setError(error: any): void {
+  setError(error: string | null): void {
     this.apiErr$$.next(error);
   }
 }

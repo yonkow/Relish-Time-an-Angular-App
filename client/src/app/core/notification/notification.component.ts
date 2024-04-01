@@ -1,6 +1,5 @@
-import { Component, ErrorHandler, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from './notification.service';
-import { ErrorNotification, ErrorObserver } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -14,8 +13,12 @@ export class NotificationComponent implements OnInit {
   constructor (private notificationService: NotificationService) {}
   
   ngOnInit(): void {
-    this.notificationService.apiErr$.subscribe((err: HttpErrorResponse | null ) => {
-      this.errorMsg = err?.message || ''  
-    })
+    this.notificationService.apiErr$.subscribe((error: any) => {
+      if (error && error.message) {
+        this.errorMsg = error.message;
+      } else {
+        this.errorMsg = 'An error occurred';
+      }
+    });
   }
 }

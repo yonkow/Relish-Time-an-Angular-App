@@ -23,6 +23,6 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     SharedModule
   ],
-  exports: [UserRoutingModule]
+  exports: [UserRoutingModule, ProfileComponent]
 })
 export class UserModule { }

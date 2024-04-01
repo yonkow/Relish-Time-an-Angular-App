@@ -15,7 +15,8 @@
                 <h4>{{ user?.username }}</h4>
                 <p class="text-secondary mb-1">Angular Developer</p>
                 <p class="text-muted font-size-sm">Sofia, Bulgaria, BG</p>
-                <!-- <button class="btn btn-primary" (click)="getLikedRecipes()">Liked Recipes</button> -->
+                <button class="btn btn-primary" (click)="onFetchLikedRecipes()" *ngIf="!showLikedRecipes">Liked Recipes</button>
+                <button class="btn btn-primary" (click)="showCreatedRecipes()" *ngIf="showLikedRecipes">Created Recipes</button>
                 <!-- <button class="btn btn-outline-primary" (click)="getComments()">Comments</button> -->
               </div>
             </div>
@@ -82,7 +83,7 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-body">
-              <form #form="ngForm" (ngSubmit)="update(form)">
+              <form #form="ngForm" (ngSubmit)="updateProfile(form)">
                 <div class="row mb-3">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Full Name</h6>
@@ -176,7 +177,11 @@
     </div>
   </div>
 </div>
-<div class="my-recipes">
+<div class="my-recipes" *ngIf="!showLikedRecipes">
   <h1>Your recipes ({{ user?.createdRecipes?.length }})</h1>
+  <app-recipe-box />
+</div>
+<div class="my-recipes" *ngIf="showLikedRecipes">
+  <h1>Liked recipes ({{ user?.likedRecipes?.length }})</h1>
   <app-recipe-box />
 </div>
