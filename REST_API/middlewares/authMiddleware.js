@@ -14,7 +14,6 @@ exports.authMiddleware = async (req, res, next) => {
         res.locals.isAuthenticated = true;
         next();
     } catch (error) {
-        console.log('authMiddleware error: ', error.message);
         res.status(401).json({ error: error.message });
         return;
     }

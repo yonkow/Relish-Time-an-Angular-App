@@ -22,14 +22,14 @@ export class CreateComponent {
     ],
     level: ['', [Validators.required]],
     mealType: ['', [Validators.required]],
-    time: [0, [Validators.required, Validators.min(5)]],
+    time: [, [Validators.required, Validators.min(5)]],
     ingredients: [[], Validators.required],
     description: [
       '',
       [
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(3000),
+        Validators.maxLength(5000),
       ],
     ],
     calories: [''],
@@ -97,26 +97,24 @@ export class CreateComponent {
     } = this.form.value;
 
     this.recipeService
-    .editRecipe(
-      name!,
-      level!,
-      mealType!,
-      time!,
-      ingredients!,
-      description!,
-      calories!,
-      image!,
-      user as User
-    )
-    .subscribe(() => {
-      this.recipeService.toggleEditMode();
-      this.router.navigate(['']);
-    });
+      .editRecipe(
+        name!,
+        level!,
+        mealType!,
+        time!,
+        ingredients!,
+        description!,
+        calories!,
+        image!,
+        user as User
+      )
+      .subscribe(() => {
+        this.recipeService.toggleEditMode();
+        this.router.navigate(['']);
+      });
   }
-  
+
   onCancel() {
-    console.log(this.recipe!._id);
-    
     this.router.navigate(['']);
   }
 }

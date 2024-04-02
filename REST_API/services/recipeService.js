@@ -5,7 +5,18 @@ exports.getAll = () => Recipe.find().sort({ 'createdAt': -1 });
 
 exports.getAllForProfile = (userId) => Recipe.find({owner: userId})
 
-exports.getOne = (recipeId) => Recipe.findById(recipeId);
+exports.getOne = (recipeId) => {
+    try {
+        const recipe = Recipe.findById(recipeId)
+        if (!recipe) {
+            throw new Error('Not found recipe! The searching recipe does not exist!');
+        }
+        return recipe;
+    } catch (error) {
+        throw error
+    }
+
+};
 
 exports.createRecipe = async (recipeData, user) => {
     const recipe = await Recipe.create(recipeData);
@@ -46,6 +57,7 @@ exports.like = async (recipeId, user) => {
     const likes = [...recipe.likes, user._id]
 
     const likedRecipes = [...user.likedRecipes, recipe._id]
+
     await User.findByIdAndUpdate(user._id, { likedRecipes })
     return await Recipe.findByIdAndUpdate(recipeId, { likes })
 }

@@ -7,12 +7,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NotificationService {
 
-  private apiErr$$ = new BehaviorSubject< string | null>(null);
+  private apiErr$$ = new BehaviorSubject< HttpErrorResponse | null>(null);
   public apiErr$ = this.apiErr$$.asObservable();
 
   constructor() {}
 
-  setError(error: string | null): void {
+  setError(error: HttpErrorResponse | null): void {
     this.apiErr$$.next(error);
   }
 }

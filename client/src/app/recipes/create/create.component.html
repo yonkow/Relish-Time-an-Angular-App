@@ -39,6 +39,7 @@
               <mat-option value="lunch">Lunch</mat-option>
               <mat-option value="brunch">Brunch</mat-option>
               <mat-option value="dinner">Dinner</mat-option>
+              <mat-option value="dessert">Salad</mat-option>
               <mat-option value="dessert">Dessert</mat-option>
             </mat-select>
             <mat-icon matSuffix color="primary">restaurant_menu</mat-icon>
@@ -84,12 +85,12 @@
           Description is required!
         </p>
         <p *ngIf="form.get('description')?.errors?.['minlength'] || form.get('description')?.errors?.['maxlength'] " class="error">
-          Description length should be between 5 and 3000 characters!
+          Description length should be between 5 and 5000 characters!
         </p>
       </ng-container>
       <mat-form-field class="example-full-width">
         <mat-label>Cooking Decription</mat-label>
-        <textarea matInput formControlName="description" required minlength="5" maxlength="3000"></textarea>
+        <textarea matInput formControlName="description" required minlength="5" maxlength="5000"></textarea>
       </mat-form-field>
       <ng-container *ngIf="form.get('ingredients')?.touched">
         <p *ngIf="form.get('ingredients')?.errors?.['required']" class="error">
@@ -174,6 +175,7 @@
                 <mat-option value="lunch">Lunch</mat-option>
                 <mat-option value="brunch">Brunch</mat-option>
                 <mat-option value="dinner">Dinner</mat-option>
+                <mat-option value="dessert">Salad</mat-option>
                 <mat-option value="dessert">Dessert</mat-option>
               </mat-select>
               <mat-icon matSuffix color="primary">restaurant_menu</mat-icon>
@@ -219,12 +221,12 @@
             Description is required!
           </p>
           <p *ngIf="form.get('description')?.errors?.['minlength'] || form.get('description')?.errors?.['maxlength'] " class="error">
-            Description length should be between 5 and 3000 characters!
+            Description length should be between 5 and 5000 characters!
           </p>
         </ng-container>
         <mat-form-field class="example-full-width">
           <mat-label>Cooking Decription</mat-label>
-          <textarea matInput formControlName="description" required minlength="5" maxlength="3000" [(ngModel)]="recipe!.description"></textarea>
+          <textarea matInput formControlName="description" required minlength="5" maxlength="5000" [(ngModel)]="recipe!.description"></textarea>
         </mat-form-field>
         <ng-container *ngIf="form.get('ingredients')?.touched">
           <p *ngIf="form.get('ingredients')?.errors?.['required']" class="error">
@@ -244,9 +246,6 @@
               <p *ngIf="form.get('image')?.errors?.['required']" class="error">
                 Image URL is required!
               </p>
-              <!-- <p *ngIf="form.get('image')?.errors?.['minlength'] || form.get('description')?.errors?.['maxlength'] " class="error">
-                Description length should be between 5 and 500 characters!
-              </p> -->
             </ng-container>
             <mat-form-field class="example-full-width">
               <mat-label>Image URL:</mat-label>

@@ -10,16 +10,9 @@
   text-decoration: underline;
   box-shadow: 0 5px 10px rgb(204, 204, 204);
   background-color: rgba(238, 74, 74, 0.699);
-
-  animation: notify 3s ease-in;
+  animation: notify 3s ease-in-out;
 }
 
-@keyframes notify {
-  0% {transform: scaleX(0); border-radius: 1em;}
-  10% {transform: scaleX(1); border-radius: 1em;}
-  13% {transform: scale(1.1); border-radius: 1em;}
-  16% {transform: scale(1); border-radius: 1em;}
-}
 .notification h6 {
   font-weight: 700;
   display: inline;
@@ -30,9 +23,74 @@
   display: inline;
 }
 
+
+@keyframes notify {
+  0% {transform: scaleX(0); border-radius: 1em;}
+  10% {transform: scaleX(1); border-radius: 1em;}
+  13% {transform: scale(1.1); border-radius: 1em;}
+  16% {transform: scale(1); border-radius: 1em;}
+}
+
+
 @keyframes exit {
   0% {opacity: 1;}
   55% {opacity: 1;}
   65% {opacity: 0;}  
   100% {opacity: 0;}
+}
+
+:host {
+  display: block;
+}
+
+.notification {
+  position: fixed;
+  z-index: 10;
+  right: 8%;
+  top: 8%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  text-decoration: underline;
+  box-shadow: 0 5px 10px rgb(204, 204, 204);
+  background-color: rgba(238, 74, 74, 0.699);
+}
+
+.notification h4 {
+  font-weight: 700;
+  display: inline;
+}
+
+.notification span {
+  font-weight: 400;
+  display: inline;
+}
+
+@keyframes notify {
+  0% {transform: scaleX(0); border-radius: 1em;}
+  10% {transform: scaleX(1); border-radius: 1em;}
+  13% {transform: scale(1.1); border-radius: 1em;}
+  16% {transform: scale(1); border-radius: 1em;}
+}
+
+@keyframes exit {
+  0% {opacity: 1;}
+  55% {opacity: 1;}
+  65% {opacity: 0;}  
+  100% {opacity: 0;}
+}
+
+.notification {
+  transition: transform 0.3s ease-in-out;
+}
+
+.notification.ng-enter,
+.notification.ng-leave {
+  transform: scale(0);
+}
+
+.notification.ng-enter-active,
+.notification.ng-leave-active {
+  transform: scale(1);
 }

@@ -75,7 +75,8 @@
               </li>
             </ul>
           </div>
-          <button (click)="toggleComments()">Show Comments</button>
+          <button *ngIf="!showComments" (click)="toggleComments()">Show Comments</button>
+          <button *ngIf="showComments" (click)="toggleComments()">Hide Comments</button>
           <ng-container *ngIf="showComments">
             <app-comments></app-comments>
           </ng-container>

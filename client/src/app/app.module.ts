@@ -13,6 +13,7 @@ import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { appInterceptorProvider } from './app-inteceptor';
 import { SharedModule } from './shared/shared.module';
+import { NotificationComponent } from './core/notification/notification.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     FooterComponent,
     AuthComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

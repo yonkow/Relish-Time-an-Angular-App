@@ -15,7 +15,7 @@ router.get('/profile', authMiddleware, async (req, res, next) => {
         const user = await authService.findOne(userId);
         res.status(200).json(user);
     } catch (err) {
-        next();
+        res.status(409).send({ message: `${err}` });
     }
 });
 
@@ -65,7 +65,7 @@ router.post('/register', async (req, res) => {
             _id: user._id,
         });
     } catch (err) {
-        res.status(409).send({ message: `${err.message}` });
+        res.status(403).send({ message: `${err.message}` });
         return;
     }
 });
@@ -90,7 +90,7 @@ router.post('/login', async (req, res) => {
             _id: user._id,
         });
     } catch (err) {
-        res.status(409).send({ message: err.message });
+        res.status(401).send({ message: err.message });
         return;
     }
 });
@@ -107,7 +107,7 @@ router.put('/:userId', authMiddleware, isAuth, async (req, res) => {
         const user = await authService.updateOne(userId, userData);
         res.status(200).send(user);
     } catch (err) {
-        res.status(409).send({ message: `${err.message}` });
+        res.status(401).send({ message: `${err.message}` });
         return;
     }
 });

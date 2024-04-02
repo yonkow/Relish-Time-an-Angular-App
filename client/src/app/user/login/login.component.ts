@@ -18,13 +18,12 @@ export class LoginComponent {
     if (form.invalid) {
       return;
     }
-    const {
-      email,
-      password,
-    } = form.value;
-    
-    this.userService.login(email, password).subscribe(() => {
-      this.router.navigate(['/'])
-    })
+    const { email, password } = form.value;
+
+    this.userService.login(email, password).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      }
+    });
   }
 }

@@ -17,7 +17,10 @@ const { apiUrl } = environment;
 class AppInterceptor implements HttpInterceptor {
   API = '/';
 
-  constructor(private notificationService: NotificationService, private router: Router) {}
+  constructor(
+    private notificationService: NotificationService,
+    private router: Router
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -33,10 +36,16 @@ class AppInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((err) => {
         if (err.status === 401) {
-          this.router.navigate(['/auth/login'])
+          this.notificationService.setError(err);
+          this.router.navigate(['/auth/login']);
+        } else if (err.status === 403) {
+          this.notificationService.setError(err);
+          this.router.navigate(['/auth/register']);
+        } else if (err.status === 408) {
+          this.notificationService.setError(err);
+          this.router.navigate(['']);
         } else {
           this.notificationService.setError(err);
-          this.router.navigate(['/error'])
         }
         return [err];
       })

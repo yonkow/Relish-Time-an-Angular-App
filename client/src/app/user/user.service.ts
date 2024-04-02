@@ -3,7 +3,6 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, catchError, tap, throwError } from 'rxjs';
 import { Recipe } from '../types/recipe';
-import { Router } from '@angular/router';
 import { NotificationService } from '../core/notification/notification.service';
 
 @Injectable({
@@ -28,7 +27,6 @@ export class UserService implements OnDestroy {
   ) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
-      // console.log(this.user)
     });
   }
 
@@ -53,22 +51,10 @@ export class UserService implements OnDestroy {
     return this.http
       .post<User>('/auth/login', { email, password })
       .pipe(
-        catchError((error: HttpErrorResponse) => {
-          console.error('Error:', error);
-          let errorMessage = 'An error occurred';
-        if (error.error && error.error.message) {
-          errorMessage = error.error.message;
-        }
-        this.notificationService.setError(errorMessage);
-        return throwError(error);
-        })
-      )
-      .pipe(
         tap((user) => {
           this.user$$.next(user);
         })
       )
-      
   }
 
   logout() {
