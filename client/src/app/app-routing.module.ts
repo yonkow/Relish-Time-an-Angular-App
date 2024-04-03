@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'recipes',
-    loadChildren: () => import('./recipes/recipe.module').then((m) => m.RecipesModule),
+    loadChildren: () =>
+      import('./recipes/recipe.module').then((m) => m.RecipesModule),
   },
   {
     path: '**',

@@ -56,9 +56,9 @@ router.put('/:recipeId', authMiddleware, isAuth, async (req, res) => {
 router.put('/:recipeId/like', authMiddleware, isAuth, async (req, res) => {
     try {
         const recipeId = req.params['recipeId'];
-        const user = await authService.findOne(req.body.user._id)
-        if(!user) {
-            throw new Error ('User does not exist!')
+        const user = await authService.findOne(req.body.user._id);
+        if (!user) {
+            throw new Error('User does not exist!');
         }
 
         const recipe = await recipeService.like(recipeId, user);

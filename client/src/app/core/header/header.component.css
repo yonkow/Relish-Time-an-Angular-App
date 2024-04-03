@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
 
 h1 {
   font-family: "DynaPuff", system-ui;
@@ -34,15 +33,13 @@ nav {
   padding: 5px 20px 0 20px;
 }
 
-.nav-list ul {  
-  /* font-family: "Play", sans-serif; */
+.nav-list ul {
   font-size: 18px;
   font-weight: 700;
   margin: 0;
   padding: 0;
   list-style: none;
   display: inline-flex;
-  /* justify-content: end; */
   gap: 0.5rem;
 }
 
@@ -53,7 +50,6 @@ nav {
 .nav-list li {
   margin: 0 0.5rem;
   border-radius: 1em 1em 0 0;
-  /* border: 1px solid red; */
 }
 
 .nav-list li.active {

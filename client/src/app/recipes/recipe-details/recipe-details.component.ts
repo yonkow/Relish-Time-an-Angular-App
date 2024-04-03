@@ -14,23 +14,22 @@ export class RecipeDetailsComponent implements OnInit {
   descriptionArr: string[] | undefined;
   ingredients: string[] | undefined;
   showComments: boolean = false;
-  
-  public get isOwner() : boolean {
-    return this.recipeService.isOwner
+
+  public get isOwner(): boolean {
+    return this.recipeService.isOwner;
   }
-  
 
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.fetchRecipe();
   }
-  
+
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
@@ -39,11 +38,11 @@ export class RecipeDetailsComponent implements OnInit {
     const recipeId = this.activatedRoute.snapshot.params['recipeId'];
 
     this.recipeService.getRecipe(recipeId).subscribe((currentRecipe) => {
-      if(!currentRecipe) {
+      if (!currentRecipe) {
         throw new Error('There is no Recipe!');
       }
       this.regroup(currentRecipe);
-      
+
       this.recipe = currentRecipe;
     });
   }
@@ -53,12 +52,12 @@ export class RecipeDetailsComponent implements OnInit {
     this.descriptionArr = currentRecipe.description.split('\n');
   }
 
-  onEdit():void {
-    this.recipeService.toggleEditMode()
-    this.router.navigate(['recipes/create'])
+  onEdit(): void {
+    this.recipeService.toggleEditMode();
+    this.router.navigate(['recipes/create']);
   }
 
-  onDelete():void {
+  onDelete(): void {
     this.recipeService.deleteRecipe().subscribe({
       next: () => {
         this.router.navigate(['/']);
@@ -70,6 +69,6 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   toggleComments() {
-    this.showComments = !this.showComments
+    this.showComments = !this.showComments;
   }
 }

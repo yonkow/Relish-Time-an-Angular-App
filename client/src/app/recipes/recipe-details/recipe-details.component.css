@@ -273,7 +273,6 @@ ol {
 }
 
 .ingredients-item {
-  /* border: 2px solid #f5f6fa; */
   background-color: #fff;
   margin-bottom: 20px;
 }
@@ -538,15 +537,15 @@ ol {
 }
 
 .recipe-right button {
-	padding: 18px 20px;
-	display: inline-block;
-	background: #f0932b;
-	color: #fff;
-	font-size: 18px;
-	font-weight: 700;
+  padding: 18px 20px;
+  display: inline-block;
+  background: #f0932b;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
   border: none;
   border-radius: 5px;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /* ----------------------- Responsive Media Styles ------------------------*/

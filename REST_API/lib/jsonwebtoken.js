@@ -7,4 +7,4 @@ const verify = util.promisify(jwt.verify);
 module.exports = {
     sing,
     verify,
-}
+};

@@ -1,18 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser')
-// const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const routes = require('./routes');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 const { errorandler } = require('./middlewares/errorMiddleware');
 
 const app = express();
-app.use(cookieParser())
-app.use(cors({
-    origin: 'http://localhost:4200',
-    credentials: true,
-}));
+app.use(cookieParser());
+app.use(
+    cors({
+        origin: 'http://localhost:4200',
+        credentials: true,
+    })
+);
 app.use(express.json());
 app.use(authMiddleware);
 

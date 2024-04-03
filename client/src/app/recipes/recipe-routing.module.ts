@@ -8,11 +8,11 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent,
-    canActivate: [AuthActivate]
+    canActivate: [AuthActivate],
   },
   {
     path: ':recipeId',
-    component: RecipeDetailsComponent
+    component: RecipeDetailsComponent,
   },
 ];
 
@@ -20,5 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
-export class RecipeRoutingModule { }
+export class RecipeRoutingModule {}

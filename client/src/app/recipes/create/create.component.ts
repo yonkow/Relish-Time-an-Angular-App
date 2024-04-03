@@ -16,24 +16,14 @@ export class CreateComponent {
   recipe: Recipe | undefined = this.recipeService.recipe;
 
   form = this.fb.group({
-    name: [
-      '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
-    ],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     level: ['', [Validators.required]],
     mealType: ['', [Validators.required]],
     time: [, [Validators.required, Validators.min(5)]],
     ingredients: [[], Validators.required],
-    description: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(5000),
-      ],
-    ],
+    description: ['', [ Validators.required, Validators.minLength(5), Validators.maxLength(5000),],],
     calories: [''],
-    image: ['', [Validators.required]], // TODO: match /^https?:\/\//, message: 'URL should be in valid format http/https...'
+    image: ['', [Validators.required]],
   });
 
   constructor(

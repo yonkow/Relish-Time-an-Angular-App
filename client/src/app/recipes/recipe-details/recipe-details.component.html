@@ -3,8 +3,8 @@
     <div class="container-fluid">
       <div class="recipe-title">
         <span
-          >~ {{ ingredients?.length }} ingredients /
-          {{ recipe?.time }} minutes / {{ recipe?.level }} / recipe</span
+          >~ {{ ingredients?.length }} ingredients / {{ recipe?.time }} minutes
+          / {{ recipe?.level }} / recipe</span
         >
         <h2>{{ recipe?.name }}</h2>
         <ul class="tags">
@@ -23,7 +23,10 @@
             <div class="rating">
               <i class="fa fa-heart"> {{ recipe?.likes?.length }} likes</i>
             </div>
-            <div class="reviews">From:  {{ recipe?.createdAt | date  }} <br /> Since: {{ recipe?.createdAt || '' | elapsedTime }}</div>
+            <div class="reviews">
+              From: {{ recipe?.createdAt | date }} <br />
+              Since: {{ recipe?.createdAt || "" | elapsedTime }}
+            </div>
             <div class="recipe-time">
               <ul>
                 <li>
@@ -45,7 +48,7 @@
               <div class="salad-list">
                 <h6>For the recipe</h6>
                 <ul>
-                  <li *ngFor="let ingr of ingredients">{{ingr}}</li>
+                  <li *ngFor="let ingr of ingredients">{{ ingr }}</li>
                 </ul>
               </div>
             </div>
@@ -55,12 +58,12 @@
           <div class="nutri-title">
             <h5>Liked by:</h5>
             <ul>
-              <li *ngFor="let like of recipe?.likes">{{like.email || ''}}</li>
+              <li *ngFor="let like of recipe?.likes">{{ like.email || "" }}</li>
             </ul>
           </div>
           <ul>
             <li>Author:</li>
-            <li>{{recipe?.owner?.username}}</li>
+            <li>{{ recipe?.owner?.username }}</li>
           </ul>
         </div>
       </div>
@@ -70,13 +73,17 @@
             <h3>Instructions</h3>
             <ul>
               <li *ngFor="let step of descriptionArr; let i = index">
-                <span>Step {{i+1}}</span>
-                {{step}}
+                <span>Step {{ i + 1 }}</span>
+                {{ step }}
               </li>
             </ul>
           </div>
-          <button *ngIf="!showComments" (click)="toggleComments()">Show Comments</button>
-          <button *ngIf="showComments" (click)="toggleComments()">Hide Comments</button>
+          <button *ngIf="!showComments" (click)="toggleComments()">
+            Show Comments
+          </button>
+          <button *ngIf="showComments" (click)="toggleComments()">
+            Hide Comments
+          </button>
           <ng-container *ngIf="showComments">
             <app-comments></app-comments>
           </ng-container>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { RecipeService } from 'src/app/recipes/recipe.service';
@@ -16,7 +16,7 @@ export class RecipeBoxComponent implements OnInit {
   recipes: Recipe[] = [];
   isProfile: Boolean = false;
   routeSubscription: Subscription = new Subscription();
-  fetchLikedRecipesSubscription: Subscription = new Subscription;
+  fetchLikedRecipesSubscription: Subscription = new Subscription();
   isHomePage: Boolean = false;
 
   constructor(
@@ -28,14 +28,13 @@ export class RecipeBoxComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchLikedRecipesSubscription =
-      this.api.fetchLikedRecipes$.subscribe(
-        (fetchLikedRecipes) => {
-          if (fetchLikedRecipes) {
-            this.fetchLikedRecipes();
-          }
+    this.fetchLikedRecipesSubscription = this.api.fetchLikedRecipes$.subscribe(
+      (fetchLikedRecipes) => {
+        if (fetchLikedRecipes) {
+          this.fetchLikedRecipes();
         }
-      );
+      }
+    );
 
     this.routeSubscription = this.activatedRoute.url.subscribe((urlSegment) => {
       const currentPath = urlSegment.map((segment) => segment.path).join('/');
@@ -79,7 +78,7 @@ export class RecipeBoxComponent implements OnInit {
   }
 
   private loadHomeRecipes(): void {
-    this.isHomePage = !this.isHomePage
+    this.isHomePage = !this.isHomePage;
     this.api.getRecipesDateOrdered().subscribe({
       next: (recipes) => {
         this.recipes = recipes;

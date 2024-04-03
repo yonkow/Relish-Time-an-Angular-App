@@ -1,9 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
-import { BehaviorSubject, Subscription, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { Recipe } from '../types/recipe';
-import { NotificationService } from '../core/notification/notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +17,12 @@ export class UserService implements OnDestroy {
   userSubscription: Subscription;
 
   get isLogged(): boolean {
+    console.log(this.user);
+    
     return !!this.user;
   }
 
-  constructor(
-    private http: HttpClient,
-    private notificationService: NotificationService
-  ) {
+  constructor(private http: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
@@ -48,13 +46,11 @@ export class UserService implements OnDestroy {
   }
 
   login(email: string, password: string) {
-    return this.http
-      .post<User>('/auth/login', { email, password })
-      .pipe(
-        tap((user) => {
-          this.user$$.next(user);
-        })
-      )
+    return this.http.post<User>('/auth/login', { email, password }).pipe(
+      tap((user) => {
+        this.user$$.next(user);
+      })
+    )
   }
 
   logout() {

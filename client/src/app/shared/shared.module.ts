@@ -8,7 +8,6 @@ import { CommentsComponent } from './comments/comments.component';
 import { SlicePipe } from './pipes/slice.pipe';
 import { WelcomeComponent } from './welcome/welcome.component';
 
-
 @NgModule({
   declarations: [ElapsedTimePipe, RecipeBoxComponent, CommentsComponent, SlicePipe, WelcomeComponent],
   imports: [CommonModule, RouterModule, FormsModule],

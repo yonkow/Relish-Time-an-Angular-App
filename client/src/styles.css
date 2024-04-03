@@ -1,48 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&family=Sanchez:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&family=Sanchez:ital@0;1&display=swap");
 
 :root {
-    /* --body-bg: #123; */
-    /* --body-bg: rgb(250, 244, 211); */
-    --body-bg: #F9E8D9;
+  /* --body-bg: #123; */
+  /* --body-bg: rgb(250, 244, 211); */
+  --body-bg: #f9e8d9;
 
-    /* --nav-bg: rgb(69, 92, 115); */
-    /* --nav-bg: rgb(251, 192, 147); */
-    --nav-bg: #9FBB73;
+  /* --nav-bg: rgb(69, 92, 115); */
+  /* --nav-bg: rgb(251, 192, 147); */
+  --nav-bg: #9fbb73;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: "Reddit Mono", monospace;
-    font-optical-sizing: auto;
-    /* font-weight: <weight>; */
-    font-style: normal;
+  font-family: "Reddit Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-h1, h2, h3, h4, h5,h6 {
-    font-family: "Sanchez", serif;
-    font-weight: 400;
-    font-style: normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Sanchez", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
-    position: relative;
-    font: inherit;
-    min-height: 100vh;
-    margin: 0;
-    /* font-size: 20px; */
-    background: var(--body-bg);
-    color: rgb(42, 43, 46);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    /* overflow: hidden; */
+  position: relative;
+  font: inherit;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--body-bg);
+  color: rgb(42, 43, 46);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-
-html, body { height: 100%; }
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+html,
+body {
+  height: 100%;
+}

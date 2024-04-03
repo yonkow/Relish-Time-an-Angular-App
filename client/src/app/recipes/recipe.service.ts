@@ -14,9 +14,7 @@ export class RecipeService {
   private recipe$ = this.recipe$$.asObservable();
 
   recipe: Recipe | undefined;
-
   recipeSubsription: Subscription;
-
   isOwner: boolean = false;
   showEditMode: boolean = false;
 

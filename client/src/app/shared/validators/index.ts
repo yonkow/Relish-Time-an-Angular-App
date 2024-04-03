@@ -1,1 +1,1 @@
-export * from './validate-same-passwords'
+export * from './validate-same-passwords';

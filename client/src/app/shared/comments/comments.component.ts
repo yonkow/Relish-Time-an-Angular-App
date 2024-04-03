@@ -37,10 +37,10 @@ export class CommentsComponent implements OnInit {
 
     const content = form.value.text;
     const recipeId = this.recipeService.recipe?._id;
-    form.setValue({text: ''})
+    form.setValue({ text: '' });
     this.recipeService.addComment(content).subscribe({
       next: () => {
-        this.ngOnInit()
+        this.ngOnInit();
         this.router.navigate([`recipes/${recipeId}`]);
       },
       error: (err) => {

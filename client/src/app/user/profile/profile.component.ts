@@ -1,15 +1,6 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from 'src/app/types/user';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 
@@ -19,8 +10,6 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  // @Output() fetchLikedRecipes: EventEmitter<void> = new EventEmitter<void>();
-
   @ViewChild(NgForm, { static: true })
   form!: ElementRef<HTMLInputElement>;
   user: User | undefined;

@@ -6,8 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class NotificationService {
-
-  private apiErr$$ = new BehaviorSubject< HttpErrorResponse | null>(null);
+  private apiErr$$ = new BehaviorSubject<HttpErrorResponse | null>(null);
   public apiErr$ = this.apiErr$$.asObservable();
 
   constructor() {}

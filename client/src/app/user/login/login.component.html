@@ -32,7 +32,9 @@
         #inputPassword="ngModel"
       />
       <ng-container *ngIf="inputPassword.touched">
-        <p *ngIf="inputPassword.errors?.['required']" class="error">Password is required.</p>
+        <p *ngIf="inputPassword.errors?.['required']" class="error">
+          Password is required.
+        </p>
       </ng-container>
 
       <button [disabled]="form.invalid" class="app-button">Login</button>

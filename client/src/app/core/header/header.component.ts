@@ -31,7 +31,6 @@ export class HeaderComponent {
         item.classList.remove('active');
       });
     const target = e.currentTarget as HTMLElement;
-
     target.classList.add('active');
 
     this.isActive = !this.isActive;

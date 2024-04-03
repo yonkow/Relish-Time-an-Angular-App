@@ -6,15 +6,12 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserService } from '../user/user.service';
-import { User } from '../types/user';
-import { HttpClient } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({ providedIn: 'root' })
 export class GuestActivate implements CanActivate {
-  constructor(private userService: UserService, private router: Router, private http: HttpClient) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,

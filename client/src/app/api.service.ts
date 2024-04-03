@@ -10,13 +10,12 @@ export class ApiService {
   private _fetchLikedRecipes = new BehaviorSubject<boolean>(false);
   fetchLikedRecipes$ = this._fetchLikedRecipes.asObservable();
 
-  
-  constructor(private http: HttpClient, ) {}
-  
+  constructor(private http: HttpClient) {}
+
   getRecipesDateOrdered() {
     return this.http.get<Recipe[]>('/recipes');
   }
-  
+
   setFetchLikedRecipes(value: boolean) {
     this._fetchLikedRecipes.next(value);
   }

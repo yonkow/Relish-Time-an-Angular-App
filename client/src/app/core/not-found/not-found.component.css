@@ -4,13 +4,13 @@
 }
 
 h1 {
-    color: rgb(42, 43, 46);
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    font-family: cursive;
-    font-size: 3em;
-    font-weight: 800;
+  color: rgb(42, 43, 46);
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-family: cursive;
+  font-size: 3em;
+  font-weight: 800;
 }
 
 .ag-page-404 {
@@ -77,14 +77,14 @@ h1 {
 }
 
 .ag-toaster_front p {
-    display: inline;
-    font-family: cursive;
-    font-size: 1.5em;
-    font-weight: 600;
-    position: relative;
+  display: inline;
+  font-family: cursive;
+  font-size: 1.5em;
+  font-weight: 600;
+  position: relative;
 
-    bottom: -3.5em;
-    left: 3.5em;
+  bottom: -3.5em;
+  left: 3.5em;
 }
 
 .ag-toaster_lever {
@@ -107,27 +107,3 @@ h1 {
   z-index: -3;
   position: relative;
 }
-/* 
-@media only screen and (max-width: 767px) {
-  .ag-format-container {
-    width: 96%;
-  }
-}
-
-@media only screen and (max-width: 639px) {
-}
-
-@media only screen and (max-width: 479px) {
-}
-
-@media (min-width: 768px) and (max-width: 979px) {
-  .ag-format-container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 980px) and (max-width: 1161px) {
-  .ag-format-container {
-    width: 960px;
-  }
-} */
