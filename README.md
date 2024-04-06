@@ -16,9 +16,9 @@ To use angular commands, you need to install angular cli. For that, run:
 
 Clone the repo: git clone https://github.com/yonkow/Relish-Time-an-Angular-App.git
 
-Enter the directory: *cd .......................................*
+Enter the directory: *cd ./GitHub/Relish-Time-an-Angular-App/*
 
-The directory contains files created by angular-cli and two directories named client and server. The client directory contains all the angular related code and the server directory contains all the node/express related code.
+The directory contains files created by angular-cli and two directories named client and REST_API. The client directory contains all the angular related code and the REST_API directory contains all the node/express related code.
 
 Install the dependencies: npm install
 
@@ -39,8 +39,8 @@ npm run watch:all
 
 This command will create a directory named build in the root directory of the project. The build directory contains two directories named client and server. The client directory contains all compiled code of angular and the server directory contains all the javascript code compiled from typescript code. -->
 
-### Running Server
-In order to run a server for development, open a new terminal window and run:
+### Running REST_API server
+In order to run a server for development, open a new terminal window in the folder and run:
 
 *npm start*
 
@@ -50,10 +50,10 @@ This command will run the node server on port 3000. **Navigate to http://localho
 
 Now the server is up and running and the code is being watch for any changes so that you can have a smooth development expreience.
 
-To see the data from express/api routes, **navigate to: http://localhost:3000/api/**
+To see the data from express/api routes, **navigate to: http://localhost:3000/**
 
 ### Running Client
-In order to run the Angular application on the client, open a new terminal window and run:
+In order to run the Angular application on the client, open a new terminal window in the folder and run:
 
 *ng serve*
 
